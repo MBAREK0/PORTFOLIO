@@ -4,17 +4,21 @@
   <LeftSidebar />
   <RightSidebar />
 
+  <main class="p-4 sm:ml-64 lg:mr-64 bg-white mt-10 pt-10 dark:bg-gray-800  font-medium text-gray-700  dark:text-gray-400 ">
+ 
+    <!-- introduction section -->
+    <Introduction />
 
-  <main class="p-4 sm:ml-64 lg:mr-64 bg-white mt-10 dark:bg-gray-800  font-medium text-gray-700  dark:text-gray-400 ">
+    <!-- personal information section -->
+    <PersonalInformation />
 
-    <h1 class="text-2xl font-semibold">Home</h1>
+    <!-- educations section -->
+    <Educations />
+    
 
-    <p class="mt-4 text-sm font-medium">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid, inventore debitis. Enim dicta molestiae repudiandae ab doloremque officia impedit quia! Officiis iure eligendi quo totam maiores consequuntur ab, libero nisi.
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt dolor explicabo inventore voluptates debitis quas minima magni maiores sequi nisi. Natus quibusdam cum omnis perferendis magni eaque tempore consectetur nesciunt.
-    </p>
   </main>
 
-  <Footer/>
+  <Footer />
 
 </template>
 
@@ -25,8 +29,8 @@ import LeftSidebar from '@/components/LeftSidebar.vue'
 import RightSidebar from '@/components/RightSidebar.vue'
 import Footer from '@/components/Footer.vue'
 import Nav from '@/components/Nav.vue'
-
-
-
+import Introduction from '@/components/sections/Introduction.vue'
+import PersonalInformation from '@/components/sections/PersonalInformation.vue'
+import Educations from '@/components/sections/Educations.vue'
 
 </script>
