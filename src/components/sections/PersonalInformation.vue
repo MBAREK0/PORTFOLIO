@@ -1,5 +1,5 @@
 <template>
-    <section id="personal-information" class="mb-5">
+    <section id="personal-information" class="mb-5 section">
         <router-link :to="{ name: 'portfolio', hash: '#personal-information' }">
             <div class="flex justify-start items-center mb-3 text-3xl dark:hover:text-white">
                 <span>#</span>
@@ -15,7 +15,7 @@
     <section id="about" class="mb-5">
         <router-link :to="{ name: 'portfolio', hash: '#about' }">
             <div class="flex justify-start items-center mb-3 text-xl dark:hover:text-white ">
-                <span>#</span>
+                <span>•</span>
                 <h1 class="ml-2">About Me </h1>
             </div>
         </router-link>
@@ -30,7 +30,7 @@
     <section id="current-role" class="mb-5">
         <router-link :to="{ name: 'portfolio', hash: '#current-role' }">
             <div class="flex justify-start items-center mb-3 text-xl dark:hover:text-white">
-                <span>#</span>
+                <span>•</span>
                 <h1 class="ml-2">Current Role </h1>
             </div>
         </router-link>

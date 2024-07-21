@@ -1,5 +1,5 @@
 <template>
-    <section id="educations" class="mb-5">
+    <section id="educations" class="mb-5 section">
         <router-link :to="{ name: 'portfolio', hash: '#educations' }">
             <div class="flex justify-start items-center mb-3 text-3xl dark:hover:text-white">
                 <span>#</span>
@@ -48,45 +48,14 @@
                 <!-- skills -->
                 <div class="mt-4">
                     <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100">Skills</h4>
-                    <ul class="grid grid-cols-2 gap-2 mt-2 sm:grid-cols-3">
-                        <li class="tag flex justify-start items-center gap-2 ">
-                            <img class="w-10 h-10 rounded-full"
-                                src="https://th.bing.com/th/id/OIP.o-wNqCyhGc3XpFMfCCFpigHaEK?rs=1&pid=ImgDetMain"
-                                alt="Rounded avatar">
-                            <span>HTML</span>
-                        </li>
-                        <li class="tag flex justify-start items-center gap-2 ">
-                            <img class="w-10 h-10 rounded-full"
-                                src="https://th.bing.com/th/id/OIP.o-wNqCyhGc3XpFMfCCFpigHaEK?rs=1&pid=ImgDetMain"
-                                alt="Rounded avatar">
-                            <span>HTML</span>
-                        </li>
-                        <li class="tag flex justify-start items-center gap-2 ">
-                            <img class="w-10 h-10 rounded-full"
-                                src="https://th.bing.com/th/id/OIP.o-wNqCyhGc3XpFMfCCFpigHaEK?rs=1&pid=ImgDetMain"
-                                alt="Rounded avatar">
-                            <span>HTML</span>
-                        </li>
-                        <li class="tag flex justify-start items-center gap-2 ">
-                            <img class="w-10 h-10 rounded-full"
-                                src="https://th.bing.com/th/id/OIP.o-wNqCyhGc3XpFMfCCFpigHaEK?rs=1&pid=ImgDetMain"
-                                alt="Rounded avatar">
-                            <span>HTML</span>
-                        </li>
-                        <li class="tag flex justify-start items-center gap-2 ">
-                            <img class="w-10 h-10 rounded-full"
-                                src="https://th.bing.com/th/id/OIP.o-wNqCyhGc3XpFMfCCFpigHaEK?rs=1&pid=ImgDetMain"
-                                alt="Rounded avatar">
-                            <span>HTML</span>
-                        </li>
-                        <li class="tag flex justify-start items-center gap-2 ">
-                            <img class="w-10 h-10 rounded-full"
-                                src="https://th.bing.com/th/id/OIP.o-wNqCyhGc3XpFMfCCFpigHaEK?rs=1&pid=ImgDetMain"
-                                alt="Rounded avatar">
-                            <span>HTML</span>
-                        </li>
-
-                    </ul>
+                    <div class="flex flex-wrap gap-2 my-2">
+                        <span
+                            class="text-xs font-semibold px-2 py-0.5 rounded text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800">Vue</span>
+                        <span
+                            class="text-xs font-semibold px-2 py-0.5 rounded text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800">Tailwind</span>
+                        <span
+                            class="text-xs font-semibold px-2 py-0.5 rounded text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800">Firebase</span>
+                    </div> 
                 </div>
             </div>
         </div>
@@ -127,27 +96,21 @@ const openModal = (education) => {
 
 <style scoped>
 .tag {
-    font-size: 0.875rem;
-    color: #4a4a4a;
-    background-color: #e2e8f0;
-    padding: 0.25rem 0.75rem;
-    border-radius: 9999px;
-    display: flex;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: #f0f0f0;
+}
+
+.tag img {
+    width: 2rem;
+    height: 2rem;
 }
 
 .tag:hover {
     background-color: #a0a0a0;
     color: #ffffff !important;
-
 }
 
-
-@media (prefers-color-scheme: dark) {
-    .tag {
-        color: #d1d5db;
-        background-color: #374151;
-    }
-}
 
 .fixed {
     overflow: auto;
@@ -159,23 +122,5 @@ const openModal = (education) => {
 }
 
 
-.modal-content {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
 
-.modal-content::-webkit-scrollbar {
-    display: none;
-}
-
-
-.fixed-container {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-
-.fixed-container::-webkit-scrollbar {
-    display: none;
-}
 </style>

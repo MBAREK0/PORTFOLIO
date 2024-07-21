@@ -11,7 +11,47 @@
   body {
     background-color: var(--bg-light);
   }
+
   
   .dark body {
     background-color: var(--bg-dark);
   }
+
+  .section {
+    padding-top: 80px; /* Change 80px to the height of your fixed navbar */
+    margin-top: -80px; /* Same value as padding-top to offset the space */
+  }
+  
+  .modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.fixed-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.fixed-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.fixed-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.fixed-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

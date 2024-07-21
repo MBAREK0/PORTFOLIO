@@ -4,7 +4,7 @@
   <LeftSidebar />
   <RightSidebar />
 
-  <main class="p-4 sm:ml-64 lg:mr-64 bg-white mt-10 pt-10 dark:bg-gray-800  font-medium text-gray-700  dark:text-gray-400 ">
+  <main class="p-4 sm:ml-64 lg:mr-64 bg-white  dark:bg-gray-800  font-medium text-gray-700  dark:text-gray-400 ">
  
     <!-- introduction section -->
     <Introduction />
@@ -14,6 +14,21 @@
 
     <!-- educations section -->
     <Educations />
+
+    <!-- license and certifications section -->
+    <LicenseAndCertifications />
+
+    <!-- honors and awards section -->
+    <HonorsAndAwards />
+
+    <!-- experiences section -->
+    <Experiences />
+
+    <!-- projects section -->
+    <Projects />
+
+    <!-- contact me section -->
+    <ContactMe />
     
 
   </main>
@@ -32,5 +47,10 @@ import Nav from '@/components/Nav.vue'
 import Introduction from '@/components/sections/Introduction.vue'
 import PersonalInformation from '@/components/sections/PersonalInformation.vue'
 import Educations from '@/components/sections/Educations.vue'
+import LicenseAndCertifications from '@/components/sections/LicenseAndCertifications.vue'
+import HonorsAndAwards from '@/components/sections/HonorsAndAwards.vue'
+import Experiences from '@/components/sections/Experiences.vue'
+import Projects from '@/components/sections/Projects.vue'
+import ContactMe from '@/components/sections/ContactMe.vue'
 
 </script>

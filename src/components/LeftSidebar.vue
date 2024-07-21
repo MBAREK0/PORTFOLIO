@@ -12,7 +12,7 @@
                         :class="{ ' router-active ': activeHash === '#introduction' }"
                         class=" cursor-pointer flex items-center justify-start p-1 text-md font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
                         <span class="mr-2">#</span>
-                        <span> Introduction </span>
+                        <span> Introduction</span>
  
                     </router-link>
 
@@ -22,7 +22,7 @@
                         :class="{ ' router-active ': activeHash === '#personal-information' }"
                         class=" cursor-pointer flex items-center justify-start p-1 text-md font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
                         <span class="mr-2">#</span>
-                        <span> Personnel information </span>
+                        <span> Personnel information</span>
  
                     </router-link>
                     <ul >
@@ -31,7 +31,7 @@
                             :class="{ ' router-active ': activeHash === '#about' }"
                             class=" cursor-pointer flex items-center justify-start p-1 pl-4 text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
                             <span class="mr-2">•</span>
-                            <span> About me</span>
+                            <span>About me</span>
                             <span
                                 class="hidden text-xs font-semibold px-2 py-0.5 rounded text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800">New</span>
                         </router-link>
@@ -40,7 +40,7 @@
                             :class="{ ' router-active ': activeHash === '#current-role' }"
                             class=" cursor-pointer flex items-center justify-start p-1 pl-4 text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
                             <span class="mr-2">•</span>
-                            <span> Current role </span>
+                            <span>Current role</span>
                             <span
                                 class="hidden text-xs font-semibold px-2 py-0.5 rounded text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800">New</span>
                         </router-link>
@@ -51,8 +51,48 @@
                         :class="{ ' router-active ': activeHash === '#educations' }"
                         class=" cursor-pointer flex items-center justify-start p-1 text-md font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
                         <span class="mr-2">#</span>
-                        <span> Educations </span>
+                        <span>Educations</span>
  
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'portfolio', hash: '#license-and-certifications' }"
+                        :class="{ ' router-active ': activeHash === '#license-and-certifications' }"
+                        class=" cursor-pointer flex items-center justify-start p-1 text-md font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+                        <span class="mr-2">#</span>
+                        <span>license And certifications</span>
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'portfolio', hash: '#honors-and-awards' }"
+                        :class="{ ' router-active ': activeHash === '#honors-and-awards' }"
+                        class=" cursor-pointer flex items-center justify-start p-1 text-md font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+                        <span class="mr-2">#</span>
+                        <span>honors And awards</span>
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'portfolio', hash: '#experiences' }"
+                        :class="{ ' router-active ': activeHash === '#experiences' }"
+                        class=" cursor-pointer flex items-center justify-start p-1 text-md font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+                        <span class="mr-2">#</span>
+                        <span>Experiences</span>
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'portfolio', hash: '#projects' }"
+                        :class="{ ' router-active ': activeHash === '#projects' }"
+                        class=" cursor-pointer flex items-center justify-start p-1 text-md font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+                        <span class="mr-2">#</span>
+                        <span>Projects</span>
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'portfolio', hash: '#contact-me' }"
+                        :class="{ ' router-active ': activeHash === '#contact-me' }"
+                        class=" cursor-pointer flex items-center justify-start p-1 text-md font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+                        <span class="mr-2">#</span>
+                        <span>Contact me</span>
                     </router-link>
                 </li>
             </ul>

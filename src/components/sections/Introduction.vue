@@ -1,5 +1,5 @@
 <template>
-    <section id="introduction" class="mb-5">
+    <section id="introduction" class="mb-5 section mt-10">
          <router-link :to="{ name: 'portfolio', hash: '#introduction' }">
             <div class="flex justify-start items-center mb-3 text-3xl dark:hover:text-white">
               <span>#</span>
@@ -11,3 +11,8 @@
             you'll find my projects, skills, and more information about me.</p>
     </section>
 </template>
+<style scoped>
+.section{
+  margin-top: -20px;
+}
+</style>
