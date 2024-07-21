@@ -1,5 +1,5 @@
 <template>
-    <nav class="fixed top-0 left-0 w-full justify-between px-4 pb-3 pt-6 text-gray-700 sm:flex sm:px-5 bg-white dark:bg-gray-800 dark:border-gray-700 p-4 sm:ml-64 lg:mr-64"
+    <nav class="fixed top-0 left-0 w-full justify-between px-4 pb-3 pt-6 text-gray-700 sm:flex sm:px-5 bg-white dark:bg-gray-800 dark:border-gray-700 p-4 z-10 sm:ml-64 lg:mr-64"
         aria-label="Breadcrumb">
         <div class="flex items-center justify-start">
             <button data-drawer-target="sidebar-multi-level-sidebar" data-drawer-toggle="sidebar-multi-level-sidebar"

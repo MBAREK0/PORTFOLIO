@@ -6,6 +6,12 @@
                 <h1 class="ml-2">Experiences</h1>
             </div>
         </router-link>
+        <p class="text-sm ">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, blanditiis. Incidunt
+            quibusdam ex eaque temporibus natus magnam blanditiis minima consequuntur, odio rem quidem mollitia itaque
+            nulla rerum. Ullam, ab ea!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque aspernatur dolorem voluptatem laboriosam
+            atque maxime ipsum. Deserunt, consequuntur animi voluptas velit, facilis aperiam soluta enim, facere error
+            harum doloremque placeat?</p>
         <div class="grid gap-4 md:grid-cols-2">
             <div v-for="experience in experiences" :key="experience.id"
                 class="p-4 bg-white rounded-lg shadow-md dark:bg-gray-800" @click="openModal(experience)">

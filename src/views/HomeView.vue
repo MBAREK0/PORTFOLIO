@@ -1,7 +1,13 @@
 <template>
 
+
+  <!-- Nav -->
   <Nav />
+
+  <!-- Left Sidebar  -->
   <LeftSidebar />
+
+  <!-- Right Sidebar -->
   <RightSidebar />
 
   <main class="p-4 sm:ml-64 lg:mr-64 bg-white  dark:bg-gray-800  font-medium text-gray-700  dark:text-gray-400 ">
@@ -29,10 +35,10 @@
 
     <!-- contact me section -->
     <ContactMe />
-    
 
   </main>
 
+  <!-- Footer -->
   <Footer />
 
 </template>
