@@ -15,57 +15,52 @@
                     </div>
                 </div>
             </div>
+            <div class="w-[190px] absolute bottom-3">
+                <button
+                    class="flex w-full justify-center items-center bg-blue-500 text-white text-sm font-semibold py-2 px-3 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 12l8 8 8-8M12 3v9" />
+                    </svg>
+                    {{ t('download_cv') }}
+                </button>
+            </div>
             <ul>
                 <li>
                     <router-link :to="{ name: 'portfolio', hash: '#introduction' }"
                         :class="{ ' router-active ': activeHash === '#introduction' }"
                         class=" cursor-pointer flex items-center justify-start p-1 text-md font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
                         <span class="mr-2">#</span>
-                        <span> Introduction</span>
-
+                        <span>{{ t('introduction') }}</span>
                     </router-link>
+                </li>
 
-                </li>
-                <li>
-                    <div class="  w-[190px]  absolute bottom-3">
-                        <button
-                            class="flex w-full justify-center items-center bg-blue-500 text-white text-sm font-semibold py-2 px-3 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
-                            <!-- New Download Icon -->
-                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M4 12l8 8 8-8M12 3v9" />
-                            </svg>
-                            Download CV
-                        </button>
-                    </div>
-                </li>
                 <li>
                     <router-link :to="{ name: 'portfolio', hash: '#personal-information' }"
                         :class="{ ' router-active ': activeHash === '#personal-information' }"
                         class=" cursor-pointer flex items-center justify-start p-1 text-md font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
                         <span class="mr-2">#</span>
-                        <span> Personnel information</span>
-
+                        <span>{{ t('personal_information') }}</span>
                     </router-link>
                     <ul>
-
                         <router-link :to="{ name: 'portfolio', hash: '#about' }"
                             :class="{ ' router-active ': activeHash === '#about' }"
                             class=" cursor-pointer flex items-center justify-start p-1 pl-4 text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
                             <span class="mr-2">•</span>
-                            <span>About me</span>
+                            <span>{{ t('about_me') }}</span>
                             <span
-                                class="hidden text-xs font-semibold px-2 py-0.5 rounded text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800">New</span>
+                                class="hidden text-xs font-semibold px-2 py-0.5 rounded text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800">{{
+                                t('new') }}</span>
                         </router-link>
-
                         <router-link :to="{ name: 'portfolio', hash: '#current-role' }"
                             :class="{ ' router-active ': activeHash === '#current-role' }"
                             class=" cursor-pointer flex items-center justify-start p-1 pl-4 text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
                             <span class="mr-2">•</span>
-                            <span>Current role</span>
+                            <span>{{ t('current_role') }}</span>
                             <span
-                                class="hidden text-xs font-semibold px-2 py-0.5 rounded text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800">New</span>
+                                class="hidden text-xs font-semibold px-2 py-0.5 rounded text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800">{{
+                                t('new') }}</span>
                         </router-link>
                     </ul>
                 </li>
@@ -74,8 +69,7 @@
                         :class="{ ' router-active ': activeHash === '#educations' }"
                         class=" cursor-pointer flex items-center justify-start p-1 text-md font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
                         <span class="mr-2">#</span>
-                        <span>Educations</span>
-
+                        <span>{{ t('educations') }}</span>
                     </router-link>
                 </li>
                 <li>
@@ -83,7 +77,7 @@
                         :class="{ ' router-active ': activeHash === '#license-and-certifications' }"
                         class=" cursor-pointer flex items-center justify-start p-1 text-md font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
                         <span class="mr-2">#</span>
-                        <span>license And certifications</span>
+                        <span>{{ t('license_and_certifications') }}</span>
                     </router-link>
                 </li>
                 <li>
@@ -91,7 +85,7 @@
                         :class="{ ' router-active ': activeHash === '#honors-and-awards' }"
                         class=" cursor-pointer flex items-center justify-start p-1 text-md font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
                         <span class="mr-2">#</span>
-                        <span>honors And awards</span>
+                        <span>{{ t('honors_and_awards') }}</span>
                     </router-link>
                 </li>
                 <li>
@@ -99,7 +93,7 @@
                         :class="{ ' router-active ': activeHash === '#experiences' }"
                         class=" cursor-pointer flex items-center justify-start p-1 text-md font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
                         <span class="mr-2">#</span>
-                        <span>Experiences</span>
+                        <span>{{ t('experiences') }}</span>
                     </router-link>
                 </li>
                 <li>
@@ -107,7 +101,7 @@
                         :class="{ ' router-active ': activeHash === '#projects' }"
                         class=" cursor-pointer flex items-center justify-start p-1 text-md font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
                         <span class="mr-2">#</span>
-                        <span>Projects</span>
+                        <span>{{ t('projects') }}</span>
                     </router-link>
                 </li>
                 <li>
@@ -115,7 +109,7 @@
                         :class="{ ' router-active ': activeHash === '#contact-me' }"
                         class=" cursor-pointer flex items-center justify-start p-1 text-md font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
                         <span class="mr-2">#</span>
-                        <span>Contact me</span>
+                        <span>{{ t('contact_me') }}</span>
                     </router-link>
                 </li>
                 <div class="lg:hidden">
@@ -125,7 +119,7 @@
                             :class="{ ' router-active ': activeHash === '#skills' }"
                             class=" cursor-pointer flex items-center justify-start p-1 text-md font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
                             <span class="mr-2">#</span>
-                            <span>Skills</span>
+                            <span>{{ t('skills') }}</span>
                         </router-link>
                     </li>
                     <!-- languages -->
@@ -134,7 +128,7 @@
                             :class="{ ' router-active ': activeHash === '#languages' }"
                             class=" cursor-pointer flex items-center justify-start p-1 text-md font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
                             <span class="mr-2">#</span>
-                            <span>Languages</span>
+                            <span>{{ t('languages') }}</span>
                         </router-link>
                     </li>
                     <!-- contacts -->
@@ -143,10 +137,9 @@
                             :class="{ ' router-active ': activeHash === '#contacts' }"
                             class=" cursor-pointer flex items-center justify-start p-1 text-md font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
                             <span class="mr-2">#</span>
-                            <span>Contacts</span>
+                            <span>{{ t('contacts') }}</span>
                         </router-link>
                     </li>
-
                 </div>
             </ul>
         </div>
@@ -156,8 +149,9 @@
 <script setup>
 import { ref, watch, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 
-
+const { t } = useI18n();
 const route = useRoute();
 const activeHash = ref(route.hash);
 
@@ -168,5 +162,4 @@ watch(() => route.hash, (newHash) => {
 onMounted(() => {
     activeHash.value = route.hash;
 });
-
 </script>

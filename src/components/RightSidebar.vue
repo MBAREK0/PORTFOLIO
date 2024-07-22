@@ -1,16 +1,30 @@
 <template>
     <aside
-        class=" hidden lg:block fixed top-0 right-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0">
+        class="hidden lg:block fixed top-0 right-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0">
         <div class="h-full px-3 py-4 overflow-y-auto bg-white dark:bg-gray-800">
-
+            <!-- dark mode and login section -->
+            <div class="flex justify-between items-center mb-3">
+                <div>
+                    <button @click="toggleDarkMode"
+                        class="p-1 text-gray-700 rounded dark:text-gray-400 focus:outline-none">
+                        <i v-if="isDarkMode" class="fas fa-sun"></i>
+                        <i v-else class="fas fa-moon"></i>
+                    </button>
+                </div>
+                <div>
+                    <select @change="changeLanguage" v-model="currentLang">
+                        <option value="en">{{ t('english') }}</option>
+                        <option value="fr">{{ t('french') }}</option>
+                    </select>
+             
+                </div>
+            </div>
 
             <!-- skills section -->
             <div>
-
                 <p class="mb-3">
-                    <span class="text-md font-semibold text-gray-700 dark:text-gray-400 ">Skills</span>
+                    <span class="text-md font-semibold text-gray-700 dark:text-gray-400 ">{{ t('skills') }}</span>
                 </p>
-
                 <div class="flex flex-wrap gap-2 ">
                     <span
                         class="text-xs font-semibold px-2 py-0.5 rounded text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800">Vue</span>
@@ -60,24 +74,32 @@
             <!-- languages -->
             <div class="mt-6">
                 <p class="mb-3">
-                    <span class="text-md font-semibold text-gray-700 dark:text-gray-400">Languages</span>
+                    <span class="text-md font-semibold text-gray-700 dark:text-gray-400">{{ t('languages') }}</span>
                 </p>
                 <div class="flex flex-wrap gap-2">
                     <div class="flex items-center">
-                        <span class="text-xs font-semibold px-2 py-0.5 text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800 rounded-l">English</span>
-                        <span class="text-xs font-semibold px-2 py-0.5  text-white bg-gray-500 dark:bg-gray-300 dark:text-blue-800 rounded-r">C1</span>
+                        <span
+                            class="text-xs font-semibold px-2 py-0.5 text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800 rounded-l">{{
+                            t('english') }}</span>
+                        <span
+                            class="text-xs font-semibold px-2 py-0.5 text-white bg-gray-500 dark:bg-gray-300 dark:text-blue-800 rounded-r">C1</span>
                     </div>
                     <div class="flex items-center">
-                        <span class="text-xs font-semibold px-2 py-0.5 text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800 rounded-l">French</span>
-                        <span class="text-xs font-semibold px-2 py-0.5  text-white bg-gray-500 dark:bg-gray-300 dark:text-blue-800 rounded-r">C1</span>
+                        <span
+                            class="text-xs font-semibold px-2 py-0.5 text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800 rounded-l">{{
+                            t('french') }}</span>
+                        <span
+                            class="text-xs font-semibold px-2 py-0.5 text-white bg-gray-500 dark:bg-gray-300 dark:text-blue-800 rounded-r">C1</span>
                     </div>
                     <div class="flex items-center">
-                        <span class="text-xs font-semibold px-2 py-0.5 text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800 rounded-l">Arabic</span>
-                        <span class="text-xs font-semibold px-2 py-0.5  text-white  bg-gray-500 dark:bg-gray-300 dark:text-blue-800 rounded-r">C1</span>
+                        <span
+                            class="text-xs font-semibold px-2 py-0.5 text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800 rounded-l">{{
+                            t('arabic') }}</span>
+                        <span
+                            class="text-xs font-semibold px-2 py-0.5 text-white bg-gray-500 dark:bg-gray-300 dark:text-blue-800 rounded-r">C1</span>
                     </div>
                 </div>
             </div>
-            
 
             <!-- contact section -->
             <div class="mt-6 absolute bottom-1 w-full">
@@ -86,7 +108,7 @@
                     <div>
                         <div id="tooltip-discord" role="tooltip"
                             class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                            Discord
+                            {{ t('discord') }}
                             <div class="tooltip-arrow" data-popper-arrow></div>
                         </div>
                         <img data-tooltip-target="tooltip-discord" class="w-8 h-8 rounded cursor-pointer"
@@ -98,7 +120,7 @@
                     <div>
                         <div id="tooltip-github" role="tooltip"
                             class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                            GitHub
+                            {{ t('github') }}
                             <div class="tooltip-arrow" data-popper-arrow></div>
                         </div>
                         <img data-tooltip-target="tooltip-github" class="w-8 h-8 rounded cursor-pointer"
@@ -110,7 +132,7 @@
                     <div>
                         <div id="tooltip-linkedin" role="tooltip"
                             class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                            LinkedIn
+                            {{ t('linkedin') }}
                             <div class="tooltip-arrow" data-popper-arrow></div>
                         </div>
                         <img data-tooltip-target="tooltip-linkedin" class="w-8 h-8 rounded cursor-pointer"
@@ -122,7 +144,7 @@
                     <div>
                         <div id="tooltip-twitter" role="tooltip"
                             class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                            Twitter
+                            {{ t('twitter') }}
                             <div class="tooltip-arrow" data-popper-arrow></div>
                         </div>
                         <img data-tooltip-target="tooltip-twitter" class="w-8 h-8 rounded cursor-pointer"
@@ -133,7 +155,7 @@
                     <div>
                         <div id="tooltip-facebook" role="tooltip"
                             class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                            Facebook
+                            {{ t('facebook') }}
                             <div class="tooltip-arrow" data-popper-arrow></div>
                         </div>
                         <img data-tooltip-target="tooltip-facebook" class="w-8 h-8 rounded cursor-pointer"
@@ -145,7 +167,7 @@
                     <div>
                         <div id="tooltip-instagram" role="tooltip"
                             class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                            Instagram
+                            {{ t('instagram') }}
                             <div class="tooltip-arrow" data-popper-arrow></div>
                         </div>
                         <img data-tooltip-target="tooltip-instagram" class="w-8 h-8 rounded cursor-pointer"
@@ -153,12 +175,11 @@
                             alt="instagram">
                     </div>
 
-
                     <!-- Contact 8: WhatsApp -->
                     <div>
                         <div id="tooltip-whatsapp" role="tooltip"
                             class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                            WhatsApp
+                            {{ t('whatsapp') }}
                             <div class="tooltip-arrow" data-popper-arrow></div>
                         </div>
                         <img data-tooltip-target="tooltip-whatsapp" class="w-8 h-8 rounded cursor-pointer"
@@ -166,8 +187,33 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
     </aside>
 </template>
+
+<script setup>
+import { ref, onMounted } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t, locale } = useI18n();
+const isDarkMode = ref(false);
+const currentLang = ref(locale.value);
+
+const toggleDarkMode = () => {
+    isDarkMode.value = !isDarkMode.value;
+    document.documentElement.classList.toggle('dark', isDarkMode.value);
+    localStorage.setItem('darkMode', isDarkMode.value.toString());
+};
+
+const changeLanguage = (event) => {
+    locale.value = event.target.value;
+};
+
+onMounted(() => {
+    const savedDarkMode = localStorage.getItem('darkMode');
+    if (savedDarkMode) {
+        isDarkMode.value = savedDarkMode === 'true';
+        document.documentElement.classList.toggle('dark', isDarkMode.value);
+    }
+});
+</script>

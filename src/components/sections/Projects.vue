@@ -4,7 +4,7 @@
         <router-link :to="{ name: 'portfolio', hash: '#projects' }">
             <div class="flex justify-start items-center mb-3 text-3xl dark:hover:text-white">
                 <span>#</span>
-                <h1 class="ml-2">Projects</h1>
+                <h1 class="ml-2">{{ t('projects') }}</h1>
             </div>
         </router-link>
         <p class="text-sm">Here are some of the projects I've worked on. Click on the images to view more details.</p>
@@ -73,7 +73,9 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 const featuredImage = ref('https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg');
 const images = ref([
     'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg',

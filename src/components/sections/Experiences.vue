@@ -3,7 +3,7 @@
         <router-link :to="{ name: 'portfolio', hash: '#experiences' }">
             <div class="flex justify-start items-center mb-3 text-3xl dark:hover:text-white">
                 <span>#</span>
-                <h1 class="ml-2">Experiences</h1>
+                <h1 class="ml-2">{{ t('experiences') }}</h1>
             </div>
         </router-link>
         <p class="text-sm ">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, blanditiis. Incidunt
@@ -100,7 +100,9 @@
 <script setup>
 
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 const experiences = ref([
     {
         id: 1,

@@ -3,7 +3,7 @@
          <router-link :to="{ name: 'portfolio', hash: '#introduction' }">
             <div class="flex justify-start items-center mb-3 text-3xl dark:hover:text-white">
               <span>#</span>
-              <h1 class="ml-2">Introduction </h1>
+              <h1 class="ml-2">{{ t('introduction') }} </h1>
             </div>
           </router-link>
           <p class="text-sm ">Welcome to my portfolio! I am a full stack developer with experience in building scalable web
@@ -11,6 +11,11 @@
             you'll find my projects, skills, and more information about me.</p>
     </section>
 </template>
+<script setup>
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+</script>
 <style scoped>
 .section{
   margin-top: -20px;

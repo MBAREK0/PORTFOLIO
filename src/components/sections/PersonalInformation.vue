@@ -3,7 +3,7 @@
         <router-link :to="{ name: 'portfolio', hash: '#personal-information' }">
             <div class="flex justify-start items-center mb-3 text-3xl dark:hover:text-white">
                 <span>#</span>
-                <h1 class="ml-2">Personal Information </h1>
+                <h1 class="ml-2">{{ t('personal_information') }} </h1>
             </div>
         </router-link>
         <p class="text-sm ">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, blanditiis. Incidunt
@@ -16,7 +16,7 @@
         <router-link :to="{ name: 'portfolio', hash: '#about' }">
             <div class="flex justify-start items-center mb-3 text-xl dark:hover:text-white ">
                 <span>•</span>
-                <h1 class="ml-2">About Me </h1>
+                <h1 class="ml-2">{{ t('about_me') }} </h1>
             </div>
         </router-link>
         <p class="text-sm ">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, blanditiis. Incidunt
@@ -31,7 +31,7 @@
         <router-link :to="{ name: 'portfolio', hash: '#current-role' }">
             <div class="flex justify-start items-center mb-3 text-xl dark:hover:text-white">
                 <span>•</span>
-                <h1 class="ml-2">Current Role </h1>
+                <h1 class="ml-2">{{ t('current_role') }} </h1>
             </div>
         </router-link>
         <p class="text-sm ">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, blanditiis. Incidunt
@@ -43,3 +43,8 @@
     </section>
 
 </template>
+<script setup>
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+</script>

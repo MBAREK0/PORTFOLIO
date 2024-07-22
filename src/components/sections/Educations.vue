@@ -3,7 +3,7 @@
         <router-link :to="{ name: 'portfolio', hash: '#educations' }">
             <div class="flex justify-start items-center mb-3 text-3xl dark:hover:text-white">
                 <span>#</span>
-                <h1 class="ml-2">Educations</h1>
+                <h1 class="ml-2">{{ t('educations') }}</h1>
             </div>
         </router-link>
         <p class="text-sm">
@@ -65,7 +65,9 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 const showModal = ref(false);
 const selectedEducation = ref({});
 

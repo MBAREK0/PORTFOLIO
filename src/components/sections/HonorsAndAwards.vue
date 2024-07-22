@@ -3,7 +3,7 @@
         <router-link :to="{ name: 'portfolio', hash: '#honors-and-awards' }">
             <div class="flex justify-start items-center mb-3 text-3xl dark:hover:text-white">
                 <span>#</span>
-                <h1 class="ml-2">Honors and Awards </h1>
+                <h1 class="ml-2">{{ t('honors_and_awards') }} </h1>
             </div>
         </router-link>
         <p class="text-sm ">I have received several awards and honors for my work in the tech industry. Here are some of the
@@ -27,3 +27,9 @@
     </section>
 
 </template>
+
+<script setup>
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+</script>
