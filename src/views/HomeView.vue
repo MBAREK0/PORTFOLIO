@@ -10,11 +10,12 @@
   <!-- Right Sidebar -->
   <RightSidebar />
 
-  <main class="p-4 sm:ml-64 lg:mr-64 bg-white  dark:bg-gray-800  font-medium text-gray-700  dark:text-gray-400 ">
+  <main class="p-4 sm:ml-[18rem] lg:mr-64 bg-white  dark:bg-gray-800  font-medium text-gray-700  dark:text-gray-400 ">
 
     <!-- introduction section -->
     <Introduction />
 
+    <h1>{{ mainStore.count }} sssssssss</h1>
     <!-- personal information section -->
     <PersonalInformation />
 
@@ -58,5 +59,6 @@ import HonorsAndAwards from '@/components/sections/HonorsAndAwards.vue'
 import Experiences from '@/components/sections/Experiences.vue'
 import Projects from '@/components/sections/Projects.vue'
 import ContactMe from '@/components/sections/ContactMe.vue'
-
+// import { useMainStore } from "@/stores/mainStore";
+// const mainStore = useMainStore();
 </script>

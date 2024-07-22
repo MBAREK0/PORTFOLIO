@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import { createPinia } from 'pinia';
 import './assets/tailwind.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import { createI18n } from 'vue-i18n';
@@ -19,7 +20,10 @@ const i18n = createI18n({
     },
   });
 const app = createApp(App);
+const pinia = createPinia();
+
 app.use(router);
+app.use(pinia);
 app.use(i18n);
 app.mount('#app');
 // createApp(App).use(router).mount('#app')

@@ -11,7 +11,7 @@
         style="right: 20px !important;">
         <!-- Dropdown button -->
         <button id="dropdownButton" data-dropdown-toggle="dropdownMenu"
-            class="flex items-center justify-between p-2 w-full text-sm font-medium text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:outline-none dark:text-white dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-600  "
+            class="flex items-center justify-between p-2 w-full text-sm font-medium text-gray-900 bg-white rounded-t-lg hover:bg-gray-100 focus:outline-none dark:text-white dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-600  "
             type="button">
             <div class="flex">
                     
@@ -48,9 +48,9 @@
         </div>
 
         <!-- Dark mode toggle -->
-        <div class="py-2">
+        <div class="pt-2">
             <button @click="toggleDarkMode"
-                class="flex items-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 w-full bg-white dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 dark:focus:ring-gray-600 transition-colors duration-150">
+                class="flex items-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 w-full bg-white dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-b-lg focus:outline-none focus:ring-2 focus:ring-gray-500 dark:focus:ring-gray-600 transition-colors duration-150">
                 <i v-if="isDarkMode" class="fas fa-sun text-yellow-500"></i>
                 <i v-else class="fas fa-moon text-gray-500"></i>
                 <div class="ml-2">
@@ -63,39 +63,52 @@
 </template>
 
 <script setup>
-import { ref, onMounted,computed } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { t, locale } = useI18n();
 const isDarkMode = ref(false);
 const currentLang = ref(locale.value);
 
+// Function to toggle dark mode
 const toggleDarkMode = () => {
     isDarkMode.value = !isDarkMode.value;
     document.documentElement.classList.toggle('dark', isDarkMode.value);
     localStorage.setItem('darkMode', isDarkMode.value.toString());
 };
 
+// Function to change language and save it to localStorage
 const changeLanguage = (lang) => {
     locale.value = lang;
-    currentLang.value = lang; // Update currentLang if needed
+    currentLang.value = lang;
+    localStorage.setItem('language', lang);
 };
 
+// On component mount, load saved settings from localStorage
 onMounted(() => {
     const savedDarkMode = localStorage.getItem('darkMode');
     if (savedDarkMode) {
         isDarkMode.value = savedDarkMode === 'true';
         document.documentElement.classList.toggle('dark', isDarkMode.value);
     }
+
+    const savedLanguage = localStorage.getItem('language');
+    if (savedLanguage) {
+        locale.value = savedLanguage;
+        currentLang.value = savedLanguage;
+    }
 });
+
+// Computed property to get the correct flag image based on the current language
 const getFlagImage = computed(() => {
-  switch (currentLang.value) {
-    case 'en':
-      return require('@/assets/images/en.png');
-    case 'fr':
-      return require('@/assets/images/fr.png');
-    default:
-      return '';
-  }
+    switch (currentLang.value) {
+        case 'en':
+            return require('@/assets/images/en.png');
+        case 'fr':
+            return require('@/assets/images/fr.png');
+        default:
+            return '';
+    }
 });
 </script>
+
