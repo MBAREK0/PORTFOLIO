@@ -27,7 +27,7 @@
                                 clip-rule="evenodd"></path>
                         </svg>
                     </button>
-
+                    
                     <!-- Dropdown menu items -->
                     <div id="dropdownMenuLang"
                         class="hidden z-10 absolute mt-2 w-44 bg-white divide-y divide-gray-200 rounded-lg shadow-lg dark:bg-gray-700 dark:divide-gray-600">
@@ -226,10 +226,12 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useMainStore } from '@/stores/mainStore';
 
 const { t, locale } = useI18n();
 const isDarkMode = ref(false);
 const currentLang = ref(locale.value);
+const mainStore = useMainStore();
 
 
 const toggleDarkMode = () => {
@@ -241,6 +243,7 @@ const toggleDarkMode = () => {
 const changeLanguage = (lang) => {
     locale.value = lang;
     currentLang.value = lang;
+    mainStore.changeLang(lang);
     localStorage.setItem('language', lang);
 };
 

@@ -65,10 +65,12 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useMainStore } from '@/stores/mainStore';
 
 const { t, locale } = useI18n();
 const isDarkMode = ref(false);
 const currentLang = ref(locale.value);
+const mainStore = useMainStore();
 
 // Function to toggle dark mode
 const toggleDarkMode = () => {
@@ -81,6 +83,7 @@ const toggleDarkMode = () => {
 const changeLanguage = (lang) => {
     locale.value = lang;
     currentLang.value = lang;
+    mainStore.changeLang(lang);
     localStorage.setItem('language', lang);
 };
 

@@ -15,7 +15,6 @@
     <!-- introduction section -->
     <Introduction />
 
-    <h1>{{ mainStore.count }} sssssssss</h1>
     <!-- personal information section -->
     <PersonalInformation />
 
@@ -43,10 +42,8 @@
   <Footer />
 
 </template>
-
 <script setup>
-
-
+import { onMounted, onBeforeMount } from 'vue'
 import LeftSidebar from '@/components/LeftSidebar.vue'
 import RightSidebar from '@/components/RightSidebar.vue'
 import Footer from '@/components/Footer.vue'
@@ -59,6 +56,7 @@ import HonorsAndAwards from '@/components/sections/HonorsAndAwards.vue'
 import Experiences from '@/components/sections/Experiences.vue'
 import Projects from '@/components/sections/Projects.vue'
 import ContactMe from '@/components/sections/ContactMe.vue'
-// import { useMainStore } from "@/stores/mainStore";
-// const mainStore = useMainStore();
+import { useInfoStore } from '@/stores/infoStore'
+
+
 </script>

@@ -1,6 +1,5 @@
-
 {
-    "skills": "Compétences",
+  "skills": "Compétences",
   "languages": "Langues",
   "dark_mode": "Mode Sombre",
   "login": "Connexion",
@@ -29,11 +28,9 @@
   "contacts": "Contacts",
   "contact_message": "Je suis disponible pour des missions freelance. Si vous avez un projet que vous souhaitez commencer, pensez que vous avez besoin de mon aide pour quelque chose ou juste envie de dire bonjour, alors contactez-moi.",
   "your_name": "Votre nom",
-  "name": "Nom",
+  "name": "nom",
   "your_email": "Votre Email",
   "your_message": "Votre message",
   "leave_comment": "Laissez un commentaire...",
   "send": "Envoyer"
-
 }
-  

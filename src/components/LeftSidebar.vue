@@ -5,27 +5,10 @@
 
         <div class="h-full px-3 py-4 ps-8 overflow-y-auto bg-white dark:bg-gray-800 ">
 
-            <div class="flex items-center justify-between my-6">
-                <div class="flex items-center">
-                    <img src="https://avatars.githubusercontent.com/u/4723117?v=4" alt="avatar"
-                        class="w-12 h-12 rounded-full">
-                    <div class="ml-3">
-                        <h3 class="text-md font-medium  text-gray-600 dark:text-gray-400">M'barek El Aadraoui</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Full Stack Developer</p>
-                    </div>
-                </div>
-            </div>
-            <div class="w-[190px] absolute bottom-3">
-                <button
-                    class="flex w-full justify-center items-center bg-blue-500 text-white text-sm font-semibold py-2 px-3 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
-                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 12l8 8 8-8M12 3v9" />
-                    </svg>
-                    {{ t('download_cv') }}
-                </button>
-            </div>
+            <TopOfLeftAside />
+ 
+            <DownloadCvBtn />
+            
             <ul>
                 <li>
                     <router-link :to="{ name: 'portfolio', hash: '#introduction' }"
@@ -148,6 +131,8 @@
 
 <script setup>
 import { ref, watch, onMounted } from 'vue';
+import TopOfLeftAside from './ui-elements/TopOfLeftAside.vue';
+import DownloadCvBtn from './ui-elements/DownloadCvBtn.vue';
 import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 

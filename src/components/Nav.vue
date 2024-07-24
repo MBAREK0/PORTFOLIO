@@ -56,7 +56,7 @@
 </template>
 <script setup>
 import { ref, watch, onMounted } from 'vue';
-import settingDropDown from './SettingsDropDown.vue';
+import settingDropDown from './ui-elements/SettingsDropDown.vue';
 import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 
