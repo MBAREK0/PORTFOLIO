@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { useMainStore as useMain } from './mainStore';
 import apiService from '@/Service/apiService';
 
-export const useSkillsStore = defineStore('skillsStore', {
+export const useContactsStore = defineStore('contactsStore', {
     state: () => ({
         store: useMain(),
         apiService: apiService,
@@ -14,12 +14,12 @@ export const useSkillsStore = defineStore('skillsStore', {
             this.loading = true;
             try {
 
-              const response = await this.apiService.getSkills();
+              const response = await this.apiService.getContacts();
               this.data = response.data;
              
             } catch (error) {
          
-              console.error('There was an error when fetching skills ', error);
+              console.error('There was an error when fetching contacts ', error);
             }
            
           },

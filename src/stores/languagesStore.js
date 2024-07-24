@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { useMainStore as useMain } from './mainStore';
 import apiService from '@/Service/apiService';
 
-export const useSkillsStore = defineStore('skillsStore', {
+export const useLanguagesStore = defineStore('languagesStore', {
     state: () => ({
         store: useMain(),
         apiService: apiService,
@@ -14,14 +14,14 @@ export const useSkillsStore = defineStore('skillsStore', {
             this.loading = true;
             try {
 
-              const response = await this.apiService.getSkills();
-              this.data = response.data;
-             
+                const response = await this.apiService.getLanguages();
+                this.data = response.data;
+
             } catch (error) {
-         
-              console.error('There was an error when fetching skills ', error);
+
+                console.error('There was an error when fetching languages', error);
             }
-           
-          },
+
+        },
     },
 });

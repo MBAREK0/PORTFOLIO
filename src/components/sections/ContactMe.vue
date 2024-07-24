@@ -62,18 +62,6 @@ const statusMessage = ref('');
 const sendEmail = async (e) => {
     e.preventDefault();
 
-    // try {
-    //   const result = await emailjs.sendForm('service_1q2z5q9', 'template_1q2z5q9', e.target, 'user_1q2z5q9');
-    //   console.log(result.text);
-    //   name.value = '';
-    //   email.value = '';
-    //   message.value = '';
-    //   status.value = 'success';
-    //   statusMessage.value = 'Votre message a été envoyé avec succès !';
-    // } catch (error) {
-    //   console.log(error.text);
-    //   status.value = 'error';
-    //   statusMessage.value = 'Une erreur est survenue lors de l\'envoi de votre message. Veuillez réessayer.';
-    // }
+ 
 }
 </script>

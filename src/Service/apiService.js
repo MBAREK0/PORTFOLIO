@@ -9,7 +9,6 @@ function getMainStore() {
 
 // Create an instance of axios with default configuration
 const apiClient = axios.create({
-  baseURL: '', // We'll set this dynamically
   withCredentials: false, // Set to true if your API requires credentials like cookies or HTTP auth
   headers: {
     Accept: 'application/json',
@@ -17,15 +16,20 @@ const apiClient = axios.create({
   },
 });
 
+// Helper function to configure the apiClient
+function configureApiClient() {
+  const mainStore = getMainStore();
+  apiClient.defaults.baseURL = mainStore.ApiUrl;
+  return {
+    selectedLang: mainStore.selectedLang,
+    email: mainStore.email,
+  };
+}
+
 // Export your API methods
 export default {
   async getInfo() {
-    const mainStore = getMainStore(); // Get the store instance
-    const selectedLang = mainStore.selectedLang;
-    const email = mainStore.email;
-    
-    // Set the baseURL dynamically based on the store
-    apiClient.defaults.baseURL = mainStore.ApiUrl;
+    const { selectedLang, email } = configureApiClient();
 
     try {
       const response = await apiClient.get(`/portfolio/info/${email}`, {
@@ -38,8 +42,70 @@ export default {
     }
   },
 
-  // You can add more methods here
-  // async createProduct(data) { ... }
-  // async updateProduct(id, data) { ... }
-  // async deleteProduct(id) { ... }
+  async getEducations() {
+    const { selectedLang, email } = configureApiClient();
+
+    try {
+      const response = await apiClient.get(`/portfolio/educations/${email}`, {
+        params: { lang: selectedLang },
+      });
+      return response.data;
+    } catch (error) {
+      console.error('API call failed:', error);
+      throw error;
+    }
+  },
+
+  async getSkills() {
+    const { selectedLang, email } = configureApiClient();
+
+    try {
+      const response = await apiClient.get(`/portfolio/skills/${email}`);
+      return response.data;
+    } catch (error) {
+      console.error('API call failed:', error);
+      throw error;
+    }
+  },
+
+  async getLanguages() {
+    const { selectedLang, email } = configureApiClient();
+
+    try {
+      const response = await apiClient.get(`/portfolio/languages/${email}`, {
+        params: { lang: selectedLang },
+      });
+      return response.data;
+    } catch (error) {
+      console.error('API call failed:', error);
+      throw error;
+    }
+  },
+
+  async getLicenseAndCertifications() {
+    const { selectedLang, email } = configureApiClient();
+
+    try {
+      const response = await apiClient.get(`/portfolio/licenses-and-certifications/${email}`, {
+        params: { lang: selectedLang },
+      });
+      return response.data;
+    } catch (error) {
+      console.error('API call failed:', error);
+      throw error;
+    }
+  },
+
+  async getContacts() {
+    const { selectedLang, email } = configureApiClient();
+
+    try {
+      const response = await apiClient.get(`/portfolio/contacts/${email}`);
+      return response.data;
+    } catch (error) {
+      console.error('API call failed:', error);
+      throw error;
+    }
+  },
+
 };

@@ -34,19 +34,14 @@ const infoStore = useInfoStore();
 const mainStore = useMainStore();
 const info = ref({});
 
-const fetchData = async () => {
-    await infoStore.get();
-    info.value = infoStore.data;
-    console.log('info', info.value);
-};
-
 onMounted(async () => {
-    await fetchData();
+    info.value = infoStore.data;
 });
+
 watch(
-    () => mainStore.selectedLang,
-    async (newLang, oldLang) => {
-        await fetchData();
+    () => infoStore.data,
+    async (newData, oldData) => {
+        info.value = newData;
     }
 );
 </script>
