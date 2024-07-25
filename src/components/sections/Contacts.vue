@@ -1,27 +1,27 @@
 <template>
 
 
-    <div class="mt-6 absolute bottom-1 w-full" v-if="contactsStore.loading" >
+    <div class="mt-6 absolute bottom-1 w-full" v-if="contactsStore.loading">
 
         <div class="flex flex-wrap gap-2 my-4 justify-start">
             <div v-for="index in 2" :key="index">
-                <div  class="flex w-full items-center justify-start gap-2">
+                <div class="flex w-full items-center justify-start gap-2">
                     <div role="status"
-                    class="flex items-center justify-center h-8 w-8 bg-gray-300 rounded animate-pulse dark:bg-gray-700">
-                    <svg class="w-3 h-3 text-gray-200 dark:text-gray-600" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
-                        <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
-                        <path
-                            d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM9 13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2Zm4 .382a1 1 0 0 1-1.447.894L10 13v-2l1.553-1.276a1 1 0 0 1 1.447.894v2.764Z" />
-                    </svg>
-                </div>
-                <div>
-                    <div class="w-28 h-2 bg-gray-200 rounded-full dark:bg-gray-700 ms-2"></div>
-                </div>
+                        class="flex items-center justify-center h-8 w-8 bg-gray-300 rounded animate-pulse dark:bg-gray-700">
+                        <svg class="w-3 h-3 text-gray-200 dark:text-gray-600" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
+                            <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+                            <path
+                                d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM9 13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2Zm4 .382a1 1 0 0 1-1.447.894L10 13v-2l1.553-1.276a1 1 0 0 1 1.447.894v2.764Z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="w-28 h-2 bg-gray-200 rounded-full dark:bg-gray-700 ms-2"></div>
+                    </div>
                 </div>
             </div>
         </div>
-     
+
 
         <div class="flex flex-wrap gap-2 my-4 justify-start">
             <div role="status" v-for="index in 6" :key="index"
@@ -41,6 +41,13 @@
         <!-- For contacts with contact field -->
         <div class="flex flex-wrap gap-2 my-4 justify-start">
             <div v-for="contact in contactsWithContactRef" :key="contact.id">
+
+                <div :id="'tooltip' + contact.id" role="tooltip"
+                    class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    {{ contact.name }}
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+
                 <div v-if="!contact.path" class="flex w-full items-center justify-start gap-2">
                     <img :data-tooltip-target="'tooltip' + contact.id" class="w-8 h-8 rounded cursor-pointer"
                         :src="mainStore.baseUrl + 'images/media/' + contact.ImageName" alt="Image">
@@ -52,6 +59,11 @@
         <!-- For contacts with path -->
         <div class="flex flex-wrap gap-2 my-4 justify-start">
             <div v-for="contact in contactsWithPathRef" :key="contact.id">
+                <div :id="'tooltip' + contact.id" role="tooltip"
+                class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                {{ contact.name }}
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
                 <a :href="contact.path" target="_blank" v-if="contact.path">
                     <img :data-tooltip-target="'tooltip' + contact.id" class="w-8 h-8 rounded cursor-pointer"
                         :src="mainStore.baseUrl + 'images/media/' + contact.ImageName" alt="Image">

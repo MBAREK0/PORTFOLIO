@@ -96,11 +96,39 @@ export default {
     }
   },
 
+  async getHonorsAndAwards() {
+    const { selectedLang, email } = configureApiClient();
+
+    try {
+      const response = await apiClient.get(`/portfolio/awards/${email}`, {
+        params: { lang: selectedLang },
+      });
+      return response.data;
+    } catch (error) {
+      console.error('API call failed:', error);
+      throw error;
+    }
+  },
+
   async getContacts() {
     const { selectedLang, email } = configureApiClient();
 
     try {
       const response = await apiClient.get(`/portfolio/contacts/${email}`);
+      return response.data;
+    } catch (error) {
+      console.error('API call failed:', error);
+      throw error;
+    }
+  },
+
+  async getExperiences() {
+    const { selectedLang, email } = configureApiClient();
+
+    try {
+      const response = await apiClient.get(`/portfolio/experiences/${email}`, {
+        params: { lang: selectedLang },
+      });
       return response.data;
     } catch (error) {
       console.error('API call failed:', error);

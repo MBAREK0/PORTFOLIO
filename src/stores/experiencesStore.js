@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { useMainStore as useMain } from './mainStore';
 import apiService from '@/Service/apiService';
 
-export const useLicenseAndCertificationsStore = defineStore('licenseAndCertificationsStore', {
+export const useExperiencesStore = defineStore('experiencesStore', {
     state: () => ({
         store: useMain(),
         apiService: apiService,
@@ -14,14 +14,12 @@ export const useLicenseAndCertificationsStore = defineStore('licenseAndCertifica
             this.loading = true;
             try {
 
-              const response = await this.apiService.getLicenseAndCertifications();
+              const response = await this.apiService.getExperiences();
               this.data = response.data;
              
             } catch (error) {
-         
-              console.error('There was an error when fetching license And Certifications  ', error);
+              console.error('There was an error when fetching experiences  ', error);
             }
-           
           },
     },
 });

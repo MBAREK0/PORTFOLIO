@@ -11,82 +11,108 @@
             cum sunt quae ea voluptates eos nemo aspernatur non quaerat dignissimos tempore optio ipsum repellendus!
         </p>
 
-        <div class="grid grid-cols-1 gap-4 mt-4 md:grid-cols-2" v-if="educationsStore.loading">
 
-            <div role="status" v-for="index in 2" :key="index"
-                class="max-w-sm p-4  rounded shadow-lg animate-pulse md:p-6 ">
-                <div class="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded dark:bg-gray-700">
-                    <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
-                        <path
-                            d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
-                        <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
-                    </svg>
+
+        <div class="grid gap-4 grid-cols-1" v-if="educationsStore.loading" >
+            <div v-for="index in 1" :key="index" class="p-4 bg-white rounded-lg shadow-md dark:bg-gray-800"
+                >
+
+                <div class="flex flex-col  items-start   gap-2 justify-between mb-3">
+                    <div class="flex items-center justify-start gap-2">
+                        <div role="status"
+                            class="flex items-center justify-center h-10 w-10 bg-gray-300 rounded animate-pulse dark:bg-gray-700">
+                            <svg class="w-3 h-3 text-gray-200 dark:text-gray-600" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
+                                <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+                                <path
+                                    d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM9 13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2Zm4 .382a1 1 0 0 1-1.447.894L10 13v-2l1.553-1.276a1 1 0 0 1 1.447.894v2.764Z" />
+                            </svg>
+                        </div>
+                        <div class="flex flex-col items-start justify-start animate-pulse">
+                            <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-10/12 mb-1"></div>
+                            <div class="w-36 h-2 bg-gray-200 rounded-full dark:bg-gray-700 "></div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-start gap-2">
+                        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 w-16  mb-2.5"></div>
+                        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 w-16  mb-2.5"></div>
+                    </div>
                 </div>
-                <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5 "></div>
-                <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-16 mb-4"></div>
-                <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 w-48  mb-2.5"></div>
-               <div class="flex items-center justify-start gap-3">
-                <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 w-16  mb-2.5"></div>
-                <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 w-16  mb-2.5"></div>
-               </div>
-                
-            </div>
 
+                <section class="mb-3">
+                    <div class="w-full animate-pulse">
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
+                        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[480px] mb-2.5"></div>
+                        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+                        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[440px] mb-2.5"></div>
+                    </div>
+                </section>
+
+
+                <!-- skills -->
+                <div class="mt-4">
+                    <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
+                    <div class="flex flex-wrap gap-2 my-2">
+
+                        <div class="flex items-center w-full  animate-pulse">
+                            <div class="h-2.5  bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                            <div class="h-2.5 ms-2 bg-gray-200 rounded-full dark:bg-gray-700 w-full"></div>
+                            <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                            <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-36"></div>
+                            <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                            <div class="h-2.5 ms-2 bg-gray-200 rounded-full dark:bg-gray-700 w-80"></div>
+                            <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                            <div class="h-2.5 ms-2 bg-gray-200 rounded-full dark:bg-gray-700 w-full"></div>
+                            <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
-        <div class="grid grid-cols-1 gap-4 mt-4 md:grid-cols-2" v-else>
+
+        <div class="grid gap-4 grid-cols-1" v-else>
             <div v-for="education in educations" :key="education.id"
-                class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 cursor-pointer bottom-1"
-                @click="openModal(education)">
-                <img :src="mainStore.baseUrl + 'images/educations/' + education.imageName" alt="Image"
-                    class="w-full h-56 mb-4">
-                <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">{{ education.degree }} {{ t('in') }}
-                    {{ education.specialty }}</h3>
-                <p class="text-sm text-gray-600 dark:text-gray-300">{{ education.school }}</p>
-                <p class="text-sm text-gray-600 dark:text-gray-300">{{ getYear(education.start_date) }} - {{
-                    getYear(education.end_date) }}</p>
+                class="p-4 bg-white rounded-lg shadow-md dark:bg-gray-800" >
+
+                <div class="flex flex-col  items-start   gap-2 justify-between mb-3">
+                    <div class="flex items-center justify-start gap-2">
+                        <img :src="mainStore.baseUrl + 'images/educations/' + education.imageName" alt="Image"
+                            v-if="education.imageName" class="w-10 h-10 ">
+                        <div class="flex flex-col items-start justify-start ">
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">{{ education.degree }} {{
+                                t('in') }}
+                                {{ education.specialty }}
+                            </h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">{{ education.school }}</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">{{ getYear(education.start_date) }} - {{
+                        getYear(education.end_date) }} </p>
+                </div>
+
+
+                <div v-if="education.description" class="mb-3">
+
+                    <p class="text-sm ">{{ education.description }}</p>
+                </div>
+                <!-- skills -->
+                <div >
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100">Skills</h4>
+                    <div class="flex flex-wrap gap-2 my-2">
+                        <span v-for="skill in education.skills" :key="skill"
+                            class="text-xs font-semibold px-2 py-0.5 rounded text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800">{{
+                                skill }}</span>
+
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- modal section -->
-    <div v-if="showModal"
-        class="fixed inset-0 z-50 flex items-center justify-center w-full h-full bg-gray-900 bg-opacity-50 overflow-auto"
-        @click.self="showModal = false">
-        <div class="bg-white dark:bg-gray-800 rounded-lg w-full max-w-xl xl:max-w-2xl max-h-[90vh] overflow-y-auto modal-content"
-            @click.stop>
-            <div class="flex justify-between items-center p-4 border-b dark:border-gray-700">
-                <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">{{ selectedEducation.degree }} {{
-                    t('in') }} {{ selectedEducation.specialty }}</h3>
-                <button @click="showModal = false" class="text-gray-500 dark:text-gray-400">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
-                        </path>
-                    </svg>
-                </button>
-            </div>
-            <div class="p-4">
-                <div :style="{ backgroundImage: `url(${mainStore.baseUrl + 'images/educations/' + selectedEducation.imageName})` }"
-                    class="w-full h-64 mb-4 bg-cover bg-center"></div>
-                <p class="text-sm text-gray-600 dark:text-gray-300">{{ selectedEducation.school }}</p>
-                <p class="text-sm text-gray-600 dark:text-gray-300">{{ getYear(selectedEducation.start_date) }} - {{
-                    getYear(selectedEducation.end_date) }}</p>
-                <p class="text-sm text-gray-600 dark:text-gray-300">{{ selectedEducation.description }}</p>
-                <!-- skills -->
-                <div class="mt-4">
-                    <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100">Skills</h4>
-                    <div class="flex flex-wrap gap-2 my-2">
-                        <span v-for="skill in selectedEducation.skills" :key="selectedEducation.skills"
-                            class="text-xs font-semibold px-2 py-0.5 rounded text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800">{{
-                            skill }}</span>
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 </template>
 
@@ -97,7 +123,6 @@ import { useMainStore } from '@/stores/mainStore';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
-const showModal = ref(false);
 const educationsStore = useEducationsStore();
 const mainStore = useMainStore();
 const selectedEducation = ref({});
@@ -108,7 +133,7 @@ const fetchData = async () => {
     await educationsStore.get();
     educations.value = educationsStore.data;
     educationsStore.loading = false;
-    console.log('educations.value', educations.value);
+
 
 };
 
@@ -127,10 +152,7 @@ const getYear = (dateString) => {
     return new Date(dateString).getFullYear();
 };
 
-const openModal = (education) => {
-    selectedEducation.value = education;
-    showModal.value = true;
-};
+
 </script>
 
 <style scoped>

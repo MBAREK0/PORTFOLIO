@@ -42,10 +42,13 @@
                 class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 cursor-pointer bottom-1"
                 @click="openModal(license)">
                 <img :src="mainStore.baseUrl + 'images/awards/' + license.imageName" alt="Image"
-                    class="w-full h-56 mb-4">
+                    v-if="license.imageName" class="w-full h-48 mb-4">
                 <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">{{ license.name }}</h3>
-                <p class="text-sm text-gray-600 dark:text-gray-300">{{ license.organization }}</p>
-                <p class="text-sm text-gray-600 dark:text-gray-300">{{ getYear(license.date) }}</p>
+
+                <div class="flex flex-col md:flex-row items-start  md:items-center gap-2 md;gap-0 justify-between mb-3">
+                    <p class="text-sm text-gray-600 dark:text-gray-300">{{ license.organization }}</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">{{ getMonthYear(license.date) }}</p>
+                </div>
             </div>
         </div>
 
@@ -68,24 +71,25 @@
                 </div>
                 <div class="p-4">
                     <img :src="mainStore.baseUrl + 'images/awards/' + selectedLicense.imageName"
-                        class="w-full  mb-4 bg-cover bg-center"></img>
-                    <p class="text-sm text-gray-600 dark:text-gray-300">{{ selectedLicense.organization }}</p>
-                    <p class="text-sm text-gray-600 dark:text-gray-300">{{ getYear(selectedLicense.date) }}</p>
+                        v-if="selectedLicense.imageName" class="w-full  mb-4 bg-cover bg-center"></img>
+                    <div
+                        class="flex flex-col md:flex-row items-start  md:items-center gap-2 md;gap-0 justify-between mb-3">
+                        <p class="text-sm text-gray-600 dark:text-gray-300">{{ selectedLicense.organization }}</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">{{ getMonthYear(selectedLicense.date) }}</p>
+                    </div>
                     <p class="text-sm text-gray-600 dark:text-gray-300">{{ selectedLicense.description }}</p>
                     <!-- skills -->
                     <div class="mt-4">
                         <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100">Skills</h4>
                         <div class="flex flex-wrap gap-2 my-2">
                             <span v-for="skill in selectedLicense.skills" :key="skill"
-                                class="text-xs font-semibold px-2 py-0.5 rounded text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800">{{ skill }}</span>
+                                class="text-xs font-semibold px-2 py-0.5 rounded text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800">{{
+                                skill }}</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
     </section>
 </template>
 
@@ -104,7 +108,6 @@ const licenses = ref({});
 const fetchData = async () => {
     await LicenseAndCertificationsStore.get();
     licenses.value = LicenseAndCertificationsStore.data;
-    console.log('licenses.value', licenses.value);
     LicenseAndCertificationsStore.loading = false;
 
 };
@@ -120,8 +123,11 @@ watch(
     }
 );
 
-const getYear = (dateString) => {
-    return new Date(dateString).getFullYear();
+
+const getMonthYear = (dateString) => {
+    const date = new Date(dateString);
+    const options = { year: 'numeric', month: 'long' };
+    return date.toLocaleDateString('en-US', options);
 };
 
 const showModal = ref(false);

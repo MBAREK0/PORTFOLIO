@@ -1,6 +1,6 @@
 <template>
 
-    <div class="flex items-center my-6" v-if="infoStore.loading">
+    <div class="flex items-center my-6 animate-pulse" v-if="infoStore.loading">
         <svg class="w-12 h-12 me-3 text-gray-200 dark:text-gray-700" aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
             <path
