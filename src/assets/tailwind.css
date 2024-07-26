@@ -52,9 +52,14 @@ html {
 
 .section {
   padding-top: 80px;
-  /* Change 80px to the height of your fixed navbar */
+
   margin-top: -80px;
-  /* Same value as padding-top to offset the space */
+
+}
+.small-section{
+  /* padding-top: 80px; */
+
+
 }
 
 .modal-content::-webkit-scrollbar {

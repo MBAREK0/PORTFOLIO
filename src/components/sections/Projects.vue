@@ -61,17 +61,20 @@
             </div>
         </div>
     </section>
-    <section id="projects" class="mb-5 section" v-else>
-        <router-link :to="{ name: 'portfolio', hash: '#projects' }">
-            <div class="flex justify-start items-center mb-3 text-3xl dark:hover:text-white">
-                <span>#</span>
-                <h1 class="ml-2">{{ t('projects') }}</h1>
-            </div>
-        </router-link>
-        <p class="text-sm">{{ t('projects_introduction') }}</p>
+    <section  v-else>
+   
+        <section id="projects" class="mb-5 section">
+            <router-link :to="{ name: 'portfolio', hash: '#projects' }">
+                <div class="flex justify-start items-center mb-3 text-3xl dark:hover:text-white">
+                    <span>#</span>
+                    <h1 class="ml-2">{{ t('projects') }}</h1>
+                </div>
+            </router-link>
+            <p class="text-sm">{{ t('projects_introduction') }}</p>
+        </section>
 
         <div class="grid grid-cols-1 gap-5 mt-5" >
-            <div class="p-4 bg-white rounded-lg shadow-md dark:bg-gray-800 section " v-for="project in projects" :key="project.id"  :id="'project' + project.id" >
+            <section class="p-4 bg-white rounded-lg shadow-md dark:bg-gray-800 mb-5 small-section  " v-for="project in projects" :key="project.id"  :id="'project' + project.id" >
                 <div class="flex items-center gap-1 md:gap-2 justify-between mb-3">
                     <div class="flex items-center justify-start gap-2">
                         <img :src="mainStore.baseUrl + 'images/projects/' + project.imageName" alt="Image" class="w-10 h-10 cursor-zoom-in"  @click="openModal(project.imageName)">
@@ -93,7 +96,6 @@
                             </div>
                         </div>
                     </div>
-                    
                 </div>
                 <p class="text-sm">{{ project.description }}</p>
                 <!-- skills -->
@@ -109,7 +111,7 @@
                         <img :src="mainStore.baseUrl + 'images/projects/' + image" alt="">
                     </swiper-slide>
                 </swiper>
-            </div>
+            </section>
         </div>
     </section>
     <div v-if="showModal && selectedImage"

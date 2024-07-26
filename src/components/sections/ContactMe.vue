@@ -11,11 +11,15 @@
         </p>
         <form class="mt-5" @submit.prevent="sendEmail">
             <div class="mb-4">
-                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $t('your_name') }}</label>
-                <input v-model="name" type="text" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" :placeholder="$t('name')"  required />
+                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{
+                    $t('your_name') }}</label>
+                <input v-model="name" type="text" id="name"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    :placeholder="$t('name')" required />
             </div>
             <div class="mb-4">
-                <label for="email-address-icon" class="block text-sm mb-2 font-medium text-gray-900 dark:text-white">{{ $t('your_email') }}</label>
+                <label for="email-address-icon" class="block text-sm mb-2 font-medium text-gray-900 dark:text-white">{{
+                    $t('your_email') }}</label>
                 <div class="relative">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
@@ -32,10 +36,11 @@
                 </div>
             </div>
             <div class="mb-4">
-                <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $t('your_message') }}</label>
+                <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{
+                    $t('your_message') }}</label>
                 <textarea id="message" rows="4"
                     class=" block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    :placeholder="$t('leave_comment')"></textarea>
+                    :placeholder="$t('leave_comment')" v-model="message"></textarea>
             </div>
             <div class="flex justify-end">
                 <button type="submit"
@@ -43,15 +48,47 @@
                     {{ $t('send') }}
                 </button>
             </div>
-            <p v-if="status" :class="{ 'text-green-500': status === 'success', 'text-red-500': status === 'error' }"
-                class="mt-4">{{ statusMessage }}</p>
+          
         </form>
     </section>
+
+    <div v-if="showModal"
+        class="fixed inset-0 z-50 flex items-center justify-center  h-full bg-gray-900 bg-opacity-50 overflow-auto"
+        @click.self="showModal = false">
+        <div class="bg-white dark:bg-gray-800 rounded-lg w-full max-w-xl xl:max-w-2xl max-h-[30vh] overflow-y-auto modal-content"
+            @click.stop>
+
+            <div
+            :class="{
+                'flex items-center p-4 mb-4 text-sm rounded-lg dark:bg-gray-800': true,
+                'text-red-800 bg-red-50 dark:text-red-400': status === 'error',
+                'text-green-800 bg-green-50 dark:text-green-400': status === 'success'
+              }"
+             role="alert">
+                <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                </svg>
+                <span class="sr-only">Info</span>
+                <div>
+                   {{ statusMessage }}
+           
+                </div>
+              </div> 
+        </div>
+    </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
-//   import emailjs from 'emailjs-com';
+import emailjs from 'emailjs-com';
+import { useMainStore } from '@/stores/mainStore';
+
+const mainStore = useMainStore();
+
+
+const SERVICE_ID = mainStore.service_id;
+const TEMPLATE_ID = mainStore.template_id;
+const USER_ID = mainStore.user_id;
 
 const name = ref('');
 const email = ref('');
@@ -59,9 +96,48 @@ const message = ref('');
 const status = ref('');
 const statusMessage = ref('');
 
-const sendEmail = async (e) => {
-    e.preventDefault();
 
- 
+const sendEmail = async () => {
+
+    if (!/\S+@\S+\.\S+/.test(email.value)) {
+        status.value = 'error';
+        return openModal('Invalid email address.');
+    }
+
+    try {
+
+        const response = await emailjs.send(SERVICE_ID, TEMPLATE_ID, {
+            from_name: name.value,
+            from_email: email.value,
+            message: message.value,
+            to_email: mainStore.email,
+            to_name: mainStore.userName,
+            reply_to: email.value,
+            my_name: mainStore.userName,
+            my_email: mainStore.email,
+        }, USER_ID);
+
+        if (response.status === 200) {
+            status.value = 'success';
+            openModal('Message sent successfully!');
+        } else {
+            throw new Error('Failed to send message.');
+        }
+    } catch (error) {
+        status.value = 'error';
+      openModal('Failed to send message.');
+    }
+};
+
+
+
+const showModal = ref(false);
+const selectedImage = ref({});
+const openModal = (message) => {
+    statusMessage.value = message;
+    showModal.value = true;
 }
+
+
 </script>
+

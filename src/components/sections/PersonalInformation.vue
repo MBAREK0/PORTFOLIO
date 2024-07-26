@@ -37,10 +37,7 @@
                     <h1 class="ml-2">{{ t('personal_information') }} </h1>
                 </div>
             </router-link>
-            <p class="text-sm ">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, blanditiis. Incidunt
-                quibusdam ex eaque temporibus natus magnam blanditiis minima consequuntur, odio rem quidem mollitia
-                itaque
-                nulla rerum. Ullam, ab ea!
+            <p class="text-sm ">{{ info.presentation }}
             </p>
         </section>
 
