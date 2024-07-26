@@ -60,10 +60,10 @@
         <div class="flex flex-wrap gap-2 my-4 justify-start">
             <div v-for="contact in contactsWithPathRef" :key="contact.id">
                 <div :id="'tooltip' + contact.id" role="tooltip"
-                class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                {{ contact.name }}
-                <div class="tooltip-arrow" data-popper-arrow></div>
-            </div>
+                    class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    {{ contact.name }}
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
                 <a :href="contact.path" target="_blank" v-if="contact.path">
                     <img :data-tooltip-target="'tooltip' + contact.id" class="w-8 h-8 rounded cursor-pointer"
                         :src="mainStore.baseUrl + 'images/media/' + contact.ImageName" alt="Image">

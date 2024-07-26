@@ -1,171 +1,234 @@
 <template>
+    <!-- project section -->
+    <section id="projects" class="mb-5 section" v-if="projectStore.loading" >
+        <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
 
-    <section id="projects" class="mb-5 section">
+        <div class="w-full">
+        
+          <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+          <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[440px] mb-2.5"></div>
+        </div>
+        <div class="grid grid-cols-1 gap-5 mt-5" >
+            <div class="p-4 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center justify-start gap-2">
+                        <div role="status" class="flex items-center justify-center h-10 w-10 bg-gray-300 rounded animate-pulse dark:bg-gray-700">
+                            <svg class="w-3 h-3 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
+                                <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+                                <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM9 13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2Zm4 .382a1 1 0 0 1-1.447.894L10 13v-2l1.553-1.276a1 1 0 0 1 1.447.894v2.764Z" />
+                            </svg>
+                        </div>
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-1"></div>
+                    </div>
+                    <div class="flex items-center justify-start gap-2">
+                        <div class="h-8 bg-gray-200 rounded-md dark:bg-gray-700 w-16 "></div>
+                        <div class="h-8 bg-gray-200 rounded-md dark:bg-gray-700 w-16 "></div>
+                    </div>
+                </div>
+                <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full mb-1"></div>
+                <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-1"></div>
+                <!-- skills -->
+                <div class="my-3">
+                    <div class="flex flex-wrap gap-2 my-2">
+                        <div class="flex items-center animate-pulse">
+                            <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                            <div class="h-2.5 ms-2 bg-gray-200 rounded-full dark:bg-gray-700 w-full"></div>
+                            <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                            <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-36"></div>
+                            <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                            <div class="h-2.5 ms-2 bg-gray-200 rounded-full dark:bg-gray-700 w-80"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- swiper -->
+                <swiper :slidesPerView="'auto'" :centeredSlides="true" :spaceBetween="30" :pagination="{ clickable: true }" :modules="modules" class="mySwiper">
+                    <swiper-slide>
+                        <div role="status" class="flex items-center justify-center w-full h-full bg-gray-300 animate-pulse dark:bg-gray-700">
+                            <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
+                                <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+                                <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM9 13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2Zm4 .382a1 1 0 0 1-1.447.894L10 13v-2l1.553-1.276a1 1 0 0 1 1.447.894v2.764Z" />
+                            </svg>
+                        </div>
+                    </swiper-slide>
+                </swiper>
+            </div>
+        </div>
+    </section>
+    <section id="projects" class="mb-5 section" v-else>
         <router-link :to="{ name: 'portfolio', hash: '#projects' }">
             <div class="flex justify-start items-center mb-3 text-3xl dark:hover:text-white">
                 <span>#</span>
                 <h1 class="ml-2">{{ t('projects') }}</h1>
             </div>
         </router-link>
-        <p class="text-sm">Here are some of the projects I've worked on. Click on the images to view more details.</p>
+        <p class="text-sm">{{ t('projects_introduction') }}</p>
 
-        <div class="grid grid-cols-1 gap-5 mt-5">
-            <div class="grid gap-1">
-                <router-link :to="{ name: 'portfolio', hash: '#current-role' }">
-                    <div class="flex justify-start items-center  text-xl dark:hover:text-white">
-                        <span>•</span>
-                        <h1 class="ml-2">Project 1 </h1>
+        <div class="grid grid-cols-1 gap-5 mt-5" >
+            <div class="p-4 bg-white rounded-lg shadow-md dark:bg-gray-800" v-for="project in projects" :key="project.id">
+                <div class="flex items-center gap-1 md:gap-2 justify-between mb-3">
+                    <div class="flex items-center justify-start gap-2">
+                        <img :src="mainStore.baseUrl + 'images/projects/' + project.imageName" alt="Image" class="w-10 h-10">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">{{ project.name }}</h3>
                     </div>
-                </router-link>
-
-                <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque aspernatur dolorem
-                    voluptatem laboriosam </p>
+                    <div class="flex items-center justify-start gap-2">
+                        <div v-if="project.github_path">
+                            <a :href="project.github_path" target="_blank" :data-tooltip-content="`#project-github-${project.id}`"
+                                class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-md text-xs px-3 py-1.5 text-center me-2 mb-2">GitHub</a>
+                            <div :id="`project-github-${project.id}`" role="tooltip" class="hidden">
+                                <p>source code</p>
+                            </div>
+                        </div>
+                        <div v-if="project.host_path">
+                            <a :href="project.host_path" target="_blank" :data-tooltip-content="`#project-host-${project.id}`"
+                                class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-md text-xs px-3 py-1.5 text-center me-2 mb-2">Demo</a>
+                            <div :id="`project-host-${project.id}`" role="tooltip" class="hidden">
+                                <p>view the project</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <p class="text-sm">{{ project.description }}</p>
                 <!-- skills -->
-                <div class="flex flex-wrap gap-2 my-2">
-                    <span
-                        class="text-xs font-semibold px-2 py-0.5 rounded text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800">Vue</span>
-                    <span
-                        class="text-xs font-semibold px-2 py-0.5 rounded text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800">Tailwind</span>
-                    <span
-                        class="text-xs font-semibold px-2 py-0.5 rounded text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800">Firebase</span>
+                <div class="flex flex-wrap gap-2 my-2 mb-3">
+                    <span v-for="technology in project.technologies" :key="technology"
+                        class="text-xs font-semibold px-2 py-0.5 rounded text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800">
+                        {{ technology }}
+                    </span>
                 </div>
-                <div class="flex items-center justify-start gap-4 mb-2">
-
-                    <a href="" target="_blank" class="cursor-pointer duration-200 flex items-center justify-start gap-1"
-                        title="Attach">
-                        <svg class="stroke-blue-300 fill-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                            viewBox="0 -0.5 25 25">
-                            <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5"
-                                d="M15.17 11.053L11.18 15.315C10.8416 15.6932 10.3599 15.9119 9.85236 15.9178C9.34487 15.9237 8.85821 15.7162 8.51104 15.346C7.74412 14.5454 7.757 13.2788 8.54004 12.494L13.899 6.763C14.4902 6.10491 15.3315 5.72677 16.2161 5.72163C17.1006 5.71649 17.9463 6.08482 18.545 6.736C19.8222 8.14736 19.8131 10.2995 18.524 11.7L12.842 17.771C12.0334 18.5827 10.9265 19.0261 9.78113 18.9971C8.63575 18.9682 7.55268 18.4695 6.78604 17.618C5.0337 15.6414 5.07705 12.6549 6.88604 10.73L12.253 5">
-                            </path>
-                        </svg>
-                        <span class="text-blue-500 hover:text-blue-600 font-semibold">GitHub Repo</span>
-                    </a>
-                    <a href="" target="_blank" class="cursor-pointer duration-200 flex items-center justify-start gap-1"
-                        title="Attach">
-                        <svg class="stroke-blue-300 fill-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                            viewBox="0 -0.5 25 25">
-                            <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5"
-                                d="M15.17 11.053L11.18 15.315C10.8416 15.6932 10.3599 15.9119 9.85236 15.9178C9.34487 15.9237 8.85821 15.7162 8.51104 15.346C7.74412 14.5454 7.757 13.2788 8.54004 12.494L13.899 6.763C14.4902 6.10491 15.3315 5.72677 16.2161 5.72163C17.1006 5.71649 17.9463 6.08482 18.545 6.736C19.8222 8.14736 19.8131 10.2995 18.524 11.7L12.842 17.771C12.0334 18.5827 10.9265 19.0261 9.78113 18.9971C8.63575 18.9682 7.55268 18.4695 6.78604 17.618C5.0337 15.6414 5.07705 12.6549 6.88604 10.73L12.253 5">
-                            </path>
-                        </svg>
-                        <span class="text-blue-500 hover:text-blue-600 font-semibold">View Project</span>
-                    </a>
-                </div>
-                <div>
-                    <img :src="featuredImage" class="h-auto max-w-full rounded-lg" alt="Featured Image">
-                </div>
-                <div class="grid grid-cols-5 gap-4">
-                    <div v-for="(image, index) in images" :key="index">
-                        <img :src="image" class="h-auto max-w-full rounded-lg cursor-pointer"
-                            @click="switchImage(image)" alt="Thumbnail">
-                    </div>
-                </div>
+                <!-- swiper -->
+                <swiper :slidesPerView="'auto'" :centeredSlides="true" :spaceBetween="30" :pagination="{ clickable: true }" :modules="modules" class="mySwiper">
+                    <swiper-slide v-for="image in project.ProjectImages" :key="image">
+                        <img :src="mainStore.baseUrl + 'images/projects/' + image" alt="">
+                    </swiper-slide>
+                </swiper>
             </div>
         </div>
-
-
-
     </section>
-
-
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { Swiper, SwiperSlide } from 'swiper/vue';
 import { useI18n } from 'vue-i18n';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import '@/assets/styles.css';
+import { Pagination } from 'swiper/modules';
+import { onMounted, ref, watch, nextTick } from 'vue';
+import { useProjectsStore } from '@/stores/projectsStore';
+import { useMainStore } from '@/stores/mainStore';
+import tippy from 'tippy.js';
+import 'tippy.js/dist/tippy.css';
 
+const modules = [Pagination];
 const { t } = useI18n();
-const featuredImage = ref('https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg');
-const images = ref([
-    'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg',
-    'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg',
-    'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg',
-    'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg',
-    'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg',
-]);
+const projectStore = useProjectsStore();
+const mainStore = useMainStore();
 
-const switchImage = (image) => {
-    featuredImage.value = image;
+const projects = ref({});
+
+const fetchData = async () => {
+    await projectStore.get();
+    projects.value = projectStore.data;
+    console.log('projects.value', projects.value);
+    projectStore.loading = false;
+};
+
+onMounted(async () => {
+    await fetchData();
+    await nextTick(); // Ensure DOM is updated before initializing tooltips
+
+    projects.value.forEach(project => {
+        const githubTooltipContent = document.querySelector(`[data-tooltip-content="#project-github-${project.id}"]`);
+        const hostTooltipContent = document.querySelector(`[data-tooltip-content="#project-host-${project.id}"]`);
+        
+        if (githubTooltipContent) {
+            tippy(githubTooltipContent, {
+                content: githubTooltipContent.nextElementSibling.innerHTML,
+                allowHTML: true,
+                arrow: true,
+                placement: 'top'
+            });
+        } else {
+            console.warn(`GitHub tooltip content not found for ${project.id}`);
+        }
+        
+        if (hostTooltipContent) {
+            tippy(hostTooltipContent, {
+                content: hostTooltipContent.nextElementSibling.innerHTML,
+                allowHTML: true,
+                arrow: true,
+                placement: 'top'
+            });
+        } else {
+            console.warn(`Host tooltip content not found for ${project.id}`);
+        }
+    });
+});
+
+watch(
+    () => mainStore.selectedLang,
+    async (newLang, oldLang) => {
+        await fetchData();
+    }
+);
+
+const showModal = ref(false);
+const selectedImage = ref({});
+const openModal = (image) => {
+    selectedImage.value = image;
+    showModal.value = true;
 }
-
-
 </script>
 
 <style scoped>
-.github-button {
+.swiper {
+    width: 100%;
+    height: 350px;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 15px;
-    gap: 15px;
-    background-color: #181717;
-    outline: 3px #181717 solid;
-    outline-offset: -3px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    transition: 400ms;
 }
 
-.demo-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 15px;
-    gap: 15px;
-    background-color: #C27803;
-    outline: 3px #C27803 solid;
-    outline-offset: -3px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    transition: 400ms;
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.github-button .text {
-    color: white;
-    font-weight: 700;
-    font-size: 1em;
-    transition: 400ms;
+.swiper-pagination {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    text-align: center;
 }
 
-.demo-button .text {
-    color: white;
-    font-weight: 700;
-    font-size: 1em;
-    transition: 400ms;
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .swiper {
+        height: 250px;
+    }
 }
 
-.github-button svg path {
-    transition: 400ms;
+@media (max-width: 480px) {
+    .swiper {
+        height: 200px;
+    }
 }
 
-.demo-button svg path {
-    transition: 400ms;
-}
-
-.github-button:hover {
-    background-color: transparent;
-}
-
-.demo-button:hover {
-    background-color: transparent;
-}
-
-.github-button:hover .text {
-    color: #181717;
-}
-
-.demo-button:hover .text {
-    color: #C27803;
-}
-
-.github-button:hover svg path {
-    fill: #181717;
-}
-
-.demo-button:hover svg path {
-    fill: #C27803;
+@media (min-width: 768px) and (max-width: 1024px) {
+    .swiper {
+        height: 300px;
+    }
 }
 </style>

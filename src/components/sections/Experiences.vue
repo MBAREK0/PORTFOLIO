@@ -1,20 +1,15 @@
 <template>
-    <section id="experiences" class="mb-5 section">
-        <router-link :to="{ name: 'portfolio', hash: '#experiences' }">
-            <div class="flex justify-start items-center mb-3 text-3xl dark:hover:text-white">
-                <span>#</span>
-                <h1 class="ml-2">{{ t('experiences') }}</h1>
-            </div>
-        </router-link>
-        <p class="text-sm ">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, blanditiis. Incidunt
-            quibusdam ex eaque temporibus natus magnam blanditiis minima consequuntur, odio rem quidem mollitia itaque
-            nulla rerum. Ullam, ab ea!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque aspernatur dolorem voluptatem laboriosam
-            atque maxime ipsum. Deserunt, consequuntur animi voluptas velit, facilis aperiam soluta enim, facere error
-            harum doloremque placeat?</p>
+    <section id="experiences" class="mb-5 section" v-if="ExperiencesStore.loading">
+        <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
 
+        <div class="w-full">
+        
+          <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+          <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[440px] mb-2.5"></div>
+        </div>
+       
 
-        <div class="grid gap-4 grid-cols-1" v-if="ExperiencesStore.loading">
+        <div class="grid gap-4 grid-cols-1" >
             <div v-for="index in 1" :key="index" class="p-4 bg-white rounded-lg shadow-md dark:bg-gray-800"
                >
 
@@ -72,16 +67,26 @@
             </div>
         </div>
 
-        <div class="grid gap-4 grid-cols-1" v-else> 
+    </section>
+    <section id="experiences" class="mb-5 section" v-else>
+        <router-link :to="{ name: 'portfolio', hash: '#experiences' }">
+            <div class="flex justify-start items-center mb-3 text-3xl dark:hover:text-white">
+                <span>#</span>
+                <h1 class="ml-2">{{ t('experiences') }}</h1>
+            </div>
+        </router-link>
+        <p class="text-sm mb-3 ">{{ t('experiences_introduction') }}</p>
+
+        <div class="grid gap-4 grid-cols-1" > 
             <div v-for="experience in experiences" :key="experience.id"
                 class="p-4 bg-white rounded-lg shadow-md dark:bg-gray-800">
 
-                <div class="flex flex-col md:flex-row items-start  md:items-center gap-2 md;gap-0 justify-between mb-3">
+                <div class="flex flex-col md:flex-row items-start  md:items-center gap-2 md:gap-0 justify-between mb-3">
                     <div class="flex items-center justify-start gap-2">
-                        <img :src="mainStore.baseUrl + 'images/experiences/' + experience.imageName"
-                            :alt="experience.organization" class="w-10 h-10 ">
+                        <img :src="mainStore.baseUrl + 'images/experiences/' + experience.imageName" @click="openModal(experience.imageName)"
+                            :alt="experience.organization" class="w-10 h-10 cursor-zoom-in ">
                         <div class="flex flex-col items-start justify-start ">
-                            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">{{ experience.role }}
+                            <h3 class="text-md font-semibold text-gray-800 dark:text-gray-100">{{ experience.role }}
                             </h3>
                             <p class="text-sm text-gray-600 dark:text-gray-300">{{ experience.organization }}</p>
                         </div>
@@ -122,7 +127,18 @@
 
     </section>
 
+    <div v-if="showModal && selectedImage"
+        class="fixed inset-0 z-50 flex items-center justify-center  h-full bg-gray-900 bg-opacity-50 overflow-auto"
+        @click.self="showModal = false">
+        <div class="bg-white dark:bg-gray-800 rounded-lg w-full max-w-xl xl:max-w-2xl max-h-[90vh] overflow-y-auto modal-content"
+            @click.stop>
 
+            <div class="p-4 w-full flex items-center justify-center">
+                <img :src="mainStore.baseUrl + 'images/experiences/' + selectedImage" alt="Image" class="w-auto h-96 ">
+
+            </div>
+        </div>
+    </div>
 
 </template>
 
@@ -164,7 +180,12 @@ const getMonthYear = (dateString) => {
     return date.toLocaleDateString('en-US', options);
 };
 
-
+const showModal = ref(false);
+const selectedImage = ref({});
+const openModal = (image) => {
+    selectedImage.value = image;
+    showModal.value = true;
+}
 </script>
 
 

@@ -136,4 +136,18 @@ export default {
     }
   },
 
+  async getProjects() {
+    const { selectedLang, email } = configureApiClient();
+
+    try {
+      const response = await apiClient.get(`/portfolio/projects/${email}`, {
+        params: { lang: selectedLang },
+      });
+      return response.data;
+    } catch (error) {
+      console.error('API call failed:', error);
+      throw error;
+    }
+  },
+
 };

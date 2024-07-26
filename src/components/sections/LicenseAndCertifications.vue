@@ -1,20 +1,9 @@
 <template>
-    <section id="license-and-certifications" class="mb-5 section">
-        <router-link :to="{ name: 'portfolio', hash: '#license-and-certifications' }">
-            <div class="flex justify-start items-center mb-3 text-3xl dark:hover:text-white">
-                <span>#</span>
-                <h1 class="ml-2">{{ t('license_and_certifications') }} </h1>
-            </div>
-        </router-link>
-        <p class="text-sm ">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, blanditiis. Incidunt
-            quibusdam ex eaque temporibus natus magnam blanditiis minima consequuntur, odio rem quidem mollitia itaque
-            nulla rerum. Ullam, ab ea!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque aspernatur dolorem voluptatem laboriosam
-            atque maxime ipsum. Deserunt, consequuntur animi voluptas velit, facilis aperiam soluta enim, facere error
-            harum doloremque placeat?</p>
-
-
-        <div class="grid grid-cols-1 gap-4 mt-4 md:grid-cols-2" v-if="LicenseAndCertificationsStore.loading">
+    <section id="license-and-certifications" class="mb-5 section" v-if="LicenseAndCertificationsStore.loading">
+        <div class="mb-5 section">
+            <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-64 mb-3"></div>
+        </div>
+        <div class="grid grid-cols-1 gap-4 mt-4 md:grid-cols-2">
 
             <div role="status" v-for="index in 2" :key="index"
                 class="max-w-sm p-4  rounded shadow-lg animate-pulse md:p-6 ">
@@ -37,7 +26,17 @@
             </div>
 
         </div>
-        <div class="grid grid-cols-1 gap-4 mt-4 md:grid-cols-2" v-else>
+
+    </section>
+    <section id="license-and-certifications" class="mb-5 section" v-else>
+        <router-link :to="{ name: 'portfolio', hash: '#license-and-certifications' }">
+            <div class="flex justify-start items-center mb-3 text-3xl dark:hover:text-white">
+                <span>#</span>
+                <h1 class="ml-2">{{ t('license_and_certifications') }} </h1>
+            </div>
+        </router-link>
+
+        <div class="grid grid-cols-1 gap-4 mt-4 md:grid-cols-2">
             <div v-for="license in licenses" :key="license.id"
                 class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 cursor-pointer bottom-1"
                 @click="openModal(license)">
@@ -52,45 +51,43 @@
             </div>
         </div>
 
-        <!-- modal section -->
-        <div v-if="showModal"
-            class="fixed inset-0 z-50 flex items-center justify-center w-full h-full bg-gray-900 bg-opacity-50 overflow-auto"
-            @click.self="showModal = false">
-            <div class="bg-white dark:bg-gray-800 rounded-lg w-full max-w-xl xl:max-w-2xl max-h-[90vh] overflow-y-auto modal-content"
-                @click.stop>
-                <div class="flex justify-between items-center p-4 border-b dark:border-gray-700">
-                    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">{{ selectedLicense.name }}</h3>
-                    <button @click="showModal = false" class="text-gray-500 dark:text-gray-400">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M6 18L18 6M6 6l12 12">
-                            </path>
-                        </svg>
-                    </button>
+    </section>
+    <!-- modal section -->
+    <div v-if="showModal"
+        class="fixed inset-0 z-50 flex items-center justify-center w-full h-full bg-gray-900 bg-opacity-50 overflow-auto"
+        @click.self="showModal = false">
+        <div class="bg-white dark:bg-gray-800 rounded-lg w-full max-w-xl xl:max-w-2xl max-h-[90vh] overflow-y-auto modal-content"
+            @click.stop>
+            <div class="flex justify-between items-center p-4 border-b dark:border-gray-700">
+                <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">{{ selectedLicense.name }}</h3>
+                <button @click="showModal = false" class="text-gray-500 dark:text-gray-400">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="p-4">
+                <img :src="mainStore.baseUrl + 'images/awards/' + selectedLicense.imageName"
+                    v-if="selectedLicense.imageName" class="w-full  mb-4 bg-cover bg-center"></img>
+                <div class="flex flex-col md:flex-row items-start  md:items-center gap-2 md;gap-0 justify-between mb-3">
+                    <p class="text-sm text-gray-600 dark:text-gray-300">{{ selectedLicense.organization }}</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">{{ getMonthYear(selectedLicense.date) }}</p>
                 </div>
-                <div class="p-4">
-                    <img :src="mainStore.baseUrl + 'images/awards/' + selectedLicense.imageName"
-                        v-if="selectedLicense.imageName" class="w-full  mb-4 bg-cover bg-center"></img>
-                    <div
-                        class="flex flex-col md:flex-row items-start  md:items-center gap-2 md;gap-0 justify-between mb-3">
-                        <p class="text-sm text-gray-600 dark:text-gray-300">{{ selectedLicense.organization }}</p>
-                        <p class="text-sm text-gray-600 dark:text-gray-300">{{ getMonthYear(selectedLicense.date) }}</p>
-                    </div>
-                    <p class="text-sm text-gray-600 dark:text-gray-300">{{ selectedLicense.description }}</p>
-                    <!-- skills -->
-                    <div class="mt-4">
-                        <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100">Skills</h4>
-                        <div class="flex flex-wrap gap-2 my-2">
-                            <span v-for="skill in selectedLicense.skills" :key="skill"
-                                class="text-xs font-semibold px-2 py-0.5 rounded text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800">{{
+                <p class="text-sm text-gray-600 dark:text-gray-300">{{ selectedLicense.description }}</p>
+                <!-- skills -->
+                <div class="mt-4">
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100">Skills</h4>
+                    <div class="flex flex-wrap gap-2 my-2">
+                        <span v-for="skill in selectedLicense.skills" :key="skill"
+                            class="text-xs font-semibold px-2 py-0.5 rounded text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800">{{
                                 skill }}</span>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 </template>
 
 <script setup>

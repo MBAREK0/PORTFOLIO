@@ -1,21 +1,14 @@
 <template>
-    <section id="educations" class="mb-5 section">
-        <router-link :to="{ name: 'portfolio', hash: '#educations' }">
-            <div class="flex justify-start items-center mb-3 text-3xl dark:hover:text-white">
-                <span>#</span>
-                <h1 class="ml-2">{{ t('educations') }}</h1>
-            </div>
-        </router-link>
-        <p class="text-sm">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos maiores dolore, doloremque nihil officia nam
-            cum sunt quae ea voluptates eos nemo aspernatur non quaerat dignissimos tempore optio ipsum repellendus!
-        </p>
+    <section id="educations" class="mb-5 section"  v-if="educationsStore.loading">
+        <div class="mb-5 section">
+            <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-3"></div>
+            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[480px] mb-2.5"></div>
+            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[440px] mb-2.5"></div>
+        </div>
 
-
-
-        <div class="grid gap-4 grid-cols-1" v-if="educationsStore.loading" >
-            <div v-for="index in 1" :key="index" class="p-4 bg-white rounded-lg shadow-md dark:bg-gray-800"
-                >
+        <div class="grid gap-4 grid-cols-1">
+            <div v-for="index in 1" :key="index" class="p-4 bg-white rounded-lg shadow-md dark:bg-gray-800">
 
                 <div class="flex flex-col  items-start   gap-2 justify-between mb-3">
                     <div class="flex items-center justify-start gap-2">
@@ -71,17 +64,28 @@
             </div>
         </div>
 
+    </section>
+    <section id="educations" class="mb-5 section" v-else>
+        <router-link :to="{ name: 'portfolio', hash: '#educations' }">
+            <div class="flex justify-start items-center mb-3 text-3xl dark:hover:text-white">
+                <span>#</span>
+                <h1 class="ml-2">{{ t('educations') }}</h1>
+            </div>
+        </router-link>
+        <p class="text-sm mb-3">{{ t('educations_introduction') }}
+        </p>
 
-        <div class="grid gap-4 grid-cols-1" v-else>
+        <div class="grid gap-4 grid-cols-1" >
             <div v-for="education in educations" :key="education.id"
-                class="p-4 bg-white rounded-lg shadow-md dark:bg-gray-800" >
+                class="p-4 bg-white rounded-lg shadow-md dark:bg-gray-800">
 
                 <div class="flex flex-col  items-start   gap-2 justify-between mb-3">
                     <div class="flex items-center justify-start gap-2">
                         <img :src="mainStore.baseUrl + 'images/educations/' + education.imageName" alt="Image"
-                            v-if="education.imageName" class="w-10 h-10 ">
+                            v-if="education.imageName" class="w-10 h-10 cursor-zoom-in "
+                            @click="openModal(education.imageName)">
                         <div class="flex flex-col items-start justify-start ">
-                            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">{{ education.degree }} {{
+                            <h3 class="text-md font-semibold text-gray-800 dark:text-gray-100">{{ education.degree }} {{
                                 t('in') }}
                                 {{ education.specialty }}
                             </h3>
@@ -98,13 +102,12 @@
                     <p class="text-sm ">{{ education.description }}</p>
                 </div>
                 <!-- skills -->
-                <div >
+                <div>
                     <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100">Skills</h4>
                     <div class="flex flex-wrap gap-2 my-2">
                         <span v-for="skill in education.skills" :key="skill"
                             class="text-xs font-semibold px-2 py-0.5 rounded text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800">{{
                                 skill }}</span>
-
                     </div>
                 </div>
 
@@ -113,7 +116,18 @@
     </section>
 
 
+    <div v-if="showModal && selectedImage"
+        class="fixed inset-0 z-50 flex items-center justify-center  h-full bg-gray-900 bg-opacity-50 overflow-auto"
+        @click.self="showModal = false">
+        <div class="bg-white dark:bg-gray-800 rounded-lg w-full max-w-xl xl:max-w-2xl max-h-[90vh] overflow-y-auto modal-content"
+            @click.stop>
 
+            <div class="p-4 w-full flex items-center justify-center">
+                <img :src="mainStore.baseUrl + 'images/educations/' + selectedImage" alt="Image" class="w-auto h-96 ">
+
+            </div>
+        </div>
+    </div>
 </template>
 
 <script setup>
@@ -125,7 +139,7 @@ import { useI18n } from 'vue-i18n';
 const { t } = useI18n();
 const educationsStore = useEducationsStore();
 const mainStore = useMainStore();
-const selectedEducation = ref({});
+
 
 const educations = ref({});
 
@@ -133,8 +147,6 @@ const fetchData = async () => {
     await educationsStore.get();
     educations.value = educationsStore.data;
     educationsStore.loading = false;
-
-
 };
 
 onMounted(async () => {
@@ -152,7 +164,12 @@ const getYear = (dateString) => {
     return new Date(dateString).getFullYear();
 };
 
-
+const showModal = ref(false);
+const selectedImage = ref({});
+const openModal = (image) => {
+    selectedImage.value = image;
+    showModal.value = true;
+}
 </script>
 
 <style scoped>
