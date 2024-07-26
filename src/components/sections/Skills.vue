@@ -1,9 +1,9 @@
 <template>
     <!-- skills section -->
-    <div>
+    <div >
 
 
-        <section v-if="skillsStore.loading">
+        <section v-if="skillsStore.loading" >
             <p class="mb-3">
             <div class="h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-16"></div>
             </p>
@@ -36,7 +36,7 @@
 
             </div>
         </section>
-        <section v-else>
+        <section v-else >
             <p class="mb-3">
                 <span class="text-md font-semibold text-gray-700 dark:text-gray-400 ">{{ t('skills') }}</span>
             </p>

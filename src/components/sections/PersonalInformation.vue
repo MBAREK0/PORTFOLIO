@@ -44,7 +44,7 @@
             </p>
         </section>
 
-        <section id="about" class="mb-5">
+        <section id="about" class="mb-5 section">
             <router-link :to="{ name: 'portfolio', hash: '#about' }">
                 <div class="flex justify-start items-center mb-3 text-xl dark:hover:text-white ">
                     <span>•</span>
@@ -54,7 +54,7 @@
             <p class="text-sm ">{{ info.about }}</p>
         </section>
 
-        <section id="current-role" class="mb-5">
+        <section id="current-role" class="mb-5 section">
             <router-link :to="{ name: 'portfolio', hash: '#current-role' }">
                 <div class="flex justify-start items-center mb-3 text-xl dark:hover:text-white">
                     <span>•</span>

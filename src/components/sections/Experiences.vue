@@ -13,7 +13,7 @@
             <div v-for="index in 1" :key="index" class="p-4 bg-white rounded-lg shadow-md dark:bg-gray-800"
                >
 
-                <div class="flex flex-col md:flex-row items-start  md:items-center gap-2 md;gap-0 justify-between mb-3">
+                <div class="flex flex-col md:flex-row items-start  md:items-center gap-2 md:gap-0 justify-between mb-3">
                     <div class="flex items-center justify-start gap-2">
                         <div role="status"
                             class="flex items-center justify-center h-10 w-10 bg-gray-300 rounded animate-pulse dark:bg-gray-700">
@@ -211,19 +211,13 @@ const openModal = (image) => {
     overflow: auto;
 }
 
-.bg-white {
-    max-height: 90vh;
-    overflow-y: auto;
-}
+ 
 
 
 
 
 
-.fixed-container {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
+
 
 
 .fixed-container::-webkit-scrollbar {

@@ -28,18 +28,25 @@
                 <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full mb-1"></div>
                 <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-1"></div>
                 <!-- skills -->
+               
                 <div class="my-3">
+                   
                     <div class="flex flex-wrap gap-2 my-2">
-                        <div class="flex items-center animate-pulse">
-                            <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+
+                        <div class="flex items-center w-full  animate-pulse">
+                            <div class="h-2.5  bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
                             <div class="h-2.5 ms-2 bg-gray-200 rounded-full dark:bg-gray-700 w-full"></div>
                             <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
                             <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-36"></div>
                             <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
                             <div class="h-2.5 ms-2 bg-gray-200 rounded-full dark:bg-gray-700 w-80"></div>
+                            <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                            <div class="h-2.5 ms-2 bg-gray-200 rounded-full dark:bg-gray-700 w-full"></div>
+                            <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
                         </div>
                     </div>
                 </div>
+
                 <!-- swiper -->
                 <swiper :slidesPerView="'auto'" :centeredSlides="true" :spaceBetween="30" :pagination="{ clickable: true }" :modules="modules" class="mySwiper">
                     <swiper-slide>
@@ -64,10 +71,10 @@
         <p class="text-sm">{{ t('projects_introduction') }}</p>
 
         <div class="grid grid-cols-1 gap-5 mt-5" >
-            <div class="p-4 bg-white rounded-lg shadow-md dark:bg-gray-800" v-for="project in projects" :key="project.id">
+            <div class="p-4 bg-white rounded-lg shadow-md dark:bg-gray-800 section " v-for="project in projects" :key="project.id"  :id="'project' + project.id" >
                 <div class="flex items-center gap-1 md:gap-2 justify-between mb-3">
                     <div class="flex items-center justify-start gap-2">
-                        <img :src="mainStore.baseUrl + 'images/projects/' + project.imageName" alt="Image" class="w-10 h-10">
+                        <img :src="mainStore.baseUrl + 'images/projects/' + project.imageName" alt="Image" class="w-10 h-10 cursor-zoom-in"  @click="openModal(project.imageName)">
                         <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">{{ project.name }}</h3>
                     </div>
                     <div class="flex items-center justify-start gap-2">
@@ -105,6 +112,18 @@
             </div>
         </div>
     </section>
+    <div v-if="showModal && selectedImage"
+    class="fixed inset-0 z-50 flex items-center justify-center  h-full bg-gray-900 bg-opacity-50 overflow-auto"
+    @click.self="showModal = false">
+    <div class="bg-white dark:bg-gray-800 rounded-lg w-full max-w-xl xl:max-w-2xl max-h-[90vh] overflow-y-auto modal-content"
+        @click.stop>
+
+        <div class="p-4 w-full flex items-center justify-center">
+            <img :src="mainStore.baseUrl + 'images/projects/' + selectedImage" alt="Image" class="w-auto h-96 ">
+
+        </div>
+    </div>
+</div>
 </template>
 
 <script setup>
@@ -179,6 +198,7 @@ const openModal = (image) => {
     selectedImage.value = image;
     showModal.value = true;
 }
+
 </script>
 
 <style scoped>

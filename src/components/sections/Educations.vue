@@ -194,8 +194,5 @@ const openModal = (image) => {
     overflow: auto;
 }
 
-.bg-white {
-    max-height: 90vh;
-    overflow-y: auto;
-}
+ 
 </style>

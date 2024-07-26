@@ -1,7 +1,7 @@
 <template>
     <aside
         class="hidden lg:block fixed top-0 right-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0">
-        <div class="h-full px-3 py-4 overflow-y-auto bg-white dark:bg-gray-800">
+        <div class="sidebar h-full px-3 py-4 overflow-y-auto bg-white dark:bg-gray-800">
             <!-- dark mode and login section -->
             <div class="flex justify-between items-center mb-3">
                 <div>
@@ -55,13 +55,15 @@
             </div>
 
             <!-- skills section -->
-            <skills/>
+            <skills />
 
             <!-- languages -->
-            <languages/>
+            <languages />
 
             <!-- contact section -->
-            <contacts/>
+            <contacts />
+
+
 
         </div>
     </aside>
@@ -79,7 +81,6 @@ const { t, locale } = useI18n();
 const isDarkMode = ref(false);
 const currentLang = ref(locale.value);
 const mainStore = useMainStore();
-
 
 const toggleDarkMode = () => {
     isDarkMode.value = !isDarkMode.value;
@@ -120,3 +121,22 @@ onMounted(() => {
     }
 });
 </script>
+
+<style>
+.sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+</style>
