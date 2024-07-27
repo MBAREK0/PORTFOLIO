@@ -5,7 +5,7 @@ const routes = [
     path: '/',
     name: 'portfolio',
     component: function () {
-      return import(/* webpackChunkName: "home" */ '../views/HomeView.vue');
+      return import( '../views/HomeView.vue');
     }
   }
 ];
@@ -16,13 +16,13 @@ const router = createRouter({
   scrollBehavior(to, from, savedPosition) {
     if (to.hash) {
       return {
-        el: to.hash,  // Use 'el' instead of 'selector'
+        el: to.hash,  
         behavior: 'smooth'
       };
     } else if (savedPosition) {
       return savedPosition;
     } else {
-      return { left: 0, top: 0 };  // Use 'left' and 'top' instead of 'x' and 'y'
+      return { left: 0, top: 0 };  
     }
   }
 });

@@ -10,6 +10,9 @@ import { createI18n } from 'vue-i18n';
 import en from './locales/en.json';
 import fr from './locales/fr.json';
 
+import VueToast from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-sugar.css';
+
 // Create the i18n instance
 const i18n = createI18n({
     legacy: false, // Ensure legacy mode is disabled
@@ -25,5 +28,6 @@ const pinia = createPinia();
 app.use(router);
 app.use(pinia);
 app.use(i18n);
+app.use(VueToast);
 app.mount('#app');
 // createApp(App).use(router).mount('#app')

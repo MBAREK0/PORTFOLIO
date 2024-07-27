@@ -43,45 +43,43 @@
                     :placeholder="$t('leave_comment')" v-model="message"></textarea>
             </div>
             <div class="flex justify-end">
-                <button type="submit"
-                    class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <button disabled type="button" v-if="loader"
+                    class="py-2.5 px-5 me-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 inline-flex items-center">
+                    <svg aria-hidden="true" role="status"
+                        class="inline w-4 h-4 me-3 text-gray-200 animate-spin dark:text-gray-600" viewBox="0 0 100 101"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                            fill="currentColor" />
+                        <path
+                            d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                            fill="#1C64F2" />
+                    </svg>
+                    Loading...
+                </button>
+                <button type="submit" v-else
+                    class="flex justify-center items-center bg-blue-500 text-white text-sm font-semibold py-2 px-12 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+
                     {{ $t('send') }}
                 </button>
+
             </div>
-          
+
+
         </form>
     </section>
 
-    <div v-if="showModal"
-        class="fixed inset-0 z-50 flex items-center justify-center  h-full bg-gray-900 bg-opacity-50 overflow-auto"
-        @click.self="showModal = false">
-        <div class="bg-white dark:bg-gray-800 rounded-lg w-full max-w-xl xl:max-w-2xl max-h-[30vh] overflow-y-auto modal-content"
-            @click.stop>
+ 
 
-            <div
-            :class="{
-                'flex items-center p-4 mb-4 text-sm rounded-lg dark:bg-gray-800': true,
-                'text-red-800 bg-red-50 dark:text-red-400': status === 'error',
-                'text-green-800 bg-green-50 dark:text-green-400': status === 'success'
-              }"
-             role="alert">
-                <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-                </svg>
-                <span class="sr-only">Info</span>
-                <div>
-                   {{ statusMessage }}
-           
-                </div>
-              </div> 
-        </div>
-    </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import emailjs from 'emailjs-com';
 import { useMainStore } from '@/stores/mainStore';
+import { useToast } from 'vue-toast-notification';
+
+const toast = useToast();
 
 const mainStore = useMainStore();
 
@@ -95,13 +93,16 @@ const email = ref('');
 const message = ref('');
 const status = ref('');
 const statusMessage = ref('');
+const loader = ref(false);
 
 
 const sendEmail = async () => {
-
+    loader.value = true;
     if (!/\S+@\S+\.\S+/.test(email.value)) {
         status.value = 'error';
-        return openModal('Invalid email address.');
+    loader.value = false;
+
+        return showErrorToast('Please enter a valid email address.');
     }
 
     try {
@@ -119,25 +120,36 @@ const sendEmail = async () => {
 
         if (response.status === 200) {
             status.value = 'success';
-            openModal('Message sent successfully!');
+            showSuccessToast('Message sent successfully.');
         } else {
             throw new Error('Failed to send message.');
         }
     } catch (error) {
         status.value = 'error';
-      openModal('Failed to send message.');
+
+        showErrorToast('Failed to send message.');
     }
+    loader.value = false;
 };
 
 
 
-const showModal = ref(false);
-const selectedImage = ref({});
-const openModal = (message) => {
-    statusMessage.value = message;
-    showModal.value = true;
-}
 
+
+const showSuccessToast = (msg) => {
+    const Message = msg;
+    toast.success(Message, {
+        position: 'bottom-right',
+        duration: 3000,
+    });
+};
+
+const showErrorToast = (msg) => {
+    const Message = msg;
+    toast.error(Message, {
+        position: 'bottom-right',
+        duration: 3000,
+    });
+};
 
 </script>
-
