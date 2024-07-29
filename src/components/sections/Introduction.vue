@@ -13,7 +13,7 @@
     <router-link :to="{ name: 'portfolio', hash: '#introduction' }">
       <div class="flex justify-start items-center mb-3 text-3xl dark:hover:text-white">
         <span>#</span>
-        <h1 class="ml-2">{{ t('introduction') }} </h1>
+        <h1 class="ml-2"  id="t-introduction">{{ t('introduction') }} </h1>
       </div>
     </router-link>
 
@@ -44,7 +44,5 @@ watch(
 
 </script>
 <style scoped>
-.section {
-  margin-top: -20px;
-}
+
 </style>

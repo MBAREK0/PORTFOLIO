@@ -6,15 +6,7 @@
         <span class="mr-2">#</span>
         <span>{{ t('projects') }}</span>
     </router-link>
-    <ul>
-        <router-link :to="{ name: 'portfolio', hash: `#project${project.id}` }" v-for="project in projects" :key="project.id"
-            :class="{ ' router-active ': activeHash === `#project${project.id}` }"
-            class=" cursor-pointer flex items-center justify-start p-1 pl-4 text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
-            <span class="mr-2">•</span>
-            <span>{{ project.name }}</span>
-        
-        </router-link>
-    </ul>
+
     </li>
 </template>
 <script setup>

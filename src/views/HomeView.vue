@@ -10,7 +10,7 @@
   <!-- Right Sidebar -->
   <RightSidebar />
 
-  <main class="p-4 sm:ml-[18rem] lg:mr-64 bg-white  dark:bg-gray-800  font-medium text-gray-700  dark:text-gray-400 ">
+  <main class="p-4 sm:ml-[18rem] lg:mr-64 mt-5 bg-white  dark:bg-gray-800  font-medium text-gray-700  dark:text-gray-400 ">
 
     <!-- introduction section -->
     <Introduction />

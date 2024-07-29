@@ -24,7 +24,7 @@
 
 
         <div class="flex flex-wrap gap-2 my-1 justify-start">
-            <div role="status" v-for="index in 6" :key="index"
+            <div role="status" v-for="index in 5" :key="index"
                 class="flex items-center justify-center h-8 w-8 bg-gray-300 rounded animate-pulse dark:bg-gray-700">
                 <svg class="w-3 h-3 text-gray-200 dark:text-gray-600" aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">

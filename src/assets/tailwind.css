@@ -50,17 +50,8 @@ html {
 }
 
 
-.section {
-  padding-top: 80px;
-
-  margin-top: -80px;
-
-}
-.small-section{
-  /* padding-top: 80px; */
 
 
-}
 
 .modal-content::-webkit-scrollbar {
   width: 8px;

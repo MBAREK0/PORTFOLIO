@@ -5,7 +5,7 @@ const routes = [
     path: '/',
     name: 'portfolio',
     component: function () {
-      return import( '../views/HomeView.vue');
+      return import('../views/HomeView.vue');
     }
   }
 ];
@@ -17,12 +17,13 @@ const router = createRouter({
     if (to.hash) {
       return {
         el: to.hash,  
-        behavior: 'smooth'
+        behavior: 'smooth',
+        top: 80 
       };
     } else if (savedPosition) {
       return savedPosition;
     } else {
-      return { left: 0, top: 0 };  
+      return { left: 0, top: 80};  
     }
   }
 });

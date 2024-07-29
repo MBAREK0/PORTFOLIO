@@ -12,7 +12,7 @@
 
             <ul v-if="Object.keys(info).length > 0">
 
-                <Introduction />
+                <Introduction  />
 
                 <PersonalInformation />
 
@@ -20,27 +20,28 @@
 
                 <licensesAndCertifications />
 
-
                 <HonorsAndAwards />
 
                 <Experiences />
 
                 <Projects />
 
-                <ContactMe />
-
+                
                 <div class="lg:hidden">
-
+                    
                     <!-- skills -->
                     <Skills />
-
+                    
                     <!-- languages -->
                     <Languages />
-
+                    
                     <!-- contacts -->
                     <Contacts />
-
+                    
                 </div>
+                
+                <ContactMe />
+            
             </ul>
 
             <ul v-else>

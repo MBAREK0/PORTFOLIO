@@ -1,5 +1,5 @@
 <template>
-    <section id="license-and-certifications" class="mb-5 section" v-if="LicenseAndCertificationsStore.loading">
+    <section  class="mb-5 section" v-if="LicenseAndCertificationsStore.loading">
         <div class="mb-5 section">
             <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-64 mb-3"></div>
         </div>
@@ -32,7 +32,7 @@
         <router-link :to="{ name: 'portfolio', hash: '#license-and-certifications' }">
             <div class="flex justify-start items-center mb-3 text-3xl dark:hover:text-white">
                 <span>#</span>
-                <h1 class="ml-2">{{ t('license_and_certifications') }} </h1>
+                <h1 class="ml-2"  id="t-license-and-certifications">{{ t('license_and_certifications') }} </h1>
             </div>
         </router-link>
 

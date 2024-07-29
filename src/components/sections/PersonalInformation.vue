@@ -34,7 +34,7 @@
             <router-link :to="{ name: 'portfolio', hash: '#personal-information' }">
                 <div class="flex justify-start items-center mb-3 text-3xl dark:hover:text-white">
                     <span>#</span>
-                    <h1 class="ml-2">{{ t('personal_information') }} </h1>
+                    <h1 class="ml-2" id="t-personal-information">{{ t('personal_information') }} </h1>
                 </div>
             </router-link>
             <p class="text-sm ">{{ info.presentation }}
@@ -45,7 +45,7 @@
             <router-link :to="{ name: 'portfolio', hash: '#about' }">
                 <div class="flex justify-start items-center mb-3 text-xl dark:hover:text-white ">
                     <span>•</span>
-                    <h1 class="ml-2">{{ t('about_me') }} </h1>
+                    <h1 class="ml-2" id="t-about" >{{ t('about_me') }} </h1>
                 </div>
             </router-link>
             <p class="text-sm ">{{ info.about }}</p>
@@ -55,7 +55,7 @@
             <router-link :to="{ name: 'portfolio', hash: '#current-role' }">
                 <div class="flex justify-start items-center mb-3 text-xl dark:hover:text-white">
                     <span>•</span>
-                    <h1 class="ml-2">{{ t('current_role') }} </h1>
+                    <h1 class="ml-2" id="t-current-role" >{{ t('current_role') }} </h1>
                 </div>
             </router-link>
             <p class="text-sm ">{{ info.currentRole }}</p>

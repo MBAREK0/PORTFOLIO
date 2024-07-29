@@ -3,7 +3,7 @@
         <router-link :to="{ name: 'portfolio', hash: '#contact-me' }">
             <div class="flex justify-start items-center mb-3 text-3xl dark:hover:text-white">
                 <span>#</span>
-                <h1 class="ml-2">{{ $t('contact_me') }}</h1>
+                <h1 class="ml-2" id="t-contact-me" >{{ $t('contact_me') }}</h1>
             </div>
         </router-link>
         <p class="text-sm">
@@ -68,9 +68,6 @@
 
         </form>
     </section>
-
- 
-
 </template>
 
 <script setup>
@@ -131,9 +128,6 @@ const sendEmail = async () => {
     }
     loader.value = false;
 };
-
-
-
 
 
 const showSuccessToast = (msg) => {

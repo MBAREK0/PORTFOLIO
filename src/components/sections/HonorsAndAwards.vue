@@ -1,5 +1,5 @@
 <template>
-    <section id="honors-and-awards" class="mb-5 section" v-if="HonorsAndAwardsStore.loading">
+    <section  class="mb-5 section" v-if="HonorsAndAwardsStore.loading">
         <div class="mb-5 section">
             <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-64 mb-3"></div>
         </div>
@@ -42,7 +42,7 @@
         <router-link :to="{ name: 'portfolio', hash: '#honors-and-awards' }">
             <div class="flex justify-start items-center mb-3 text-3xl dark:hover:text-white">
                 <span>#</span>
-                <h1 class="ml-2">{{ t('honors_and_awards') }} </h1>
+                <h1 class="ml-2"  id="t-honors-and-awards"  >{{ t('honors_and_awards') }} </h1>
             </div>
         </router-link>
 
