@@ -1,5 +1,5 @@
 <template>
-    <section  class="mb-5 section" v-if="HonorsAndAwardsStore.loading">
+    <section id="honors-and-awards" class="mb-5 section" v-if="HonorsAndAwardsStore.loading">
         <div class="mb-5 section">
             <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-64 mb-3"></div>
         </div>

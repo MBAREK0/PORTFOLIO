@@ -22,6 +22,7 @@ const i18n = createI18n({
       fr,
     },
   });
+
 const app = createApp(App);
 const pinia = createPinia();
 
@@ -30,4 +31,4 @@ app.use(pinia);
 app.use(i18n);
 app.use(VueToast);
 app.mount('#app');
-// createApp(App).use(router).mount('#app')
+

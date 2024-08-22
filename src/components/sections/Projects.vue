@@ -1,6 +1,6 @@
 <template>
     <!-- project section -->
-    <section class="mb-5 section" v-if="projectStore.loading">
+    <section class="mb-5 section" id="projects" v-if="projectStore.loading">
         <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
 
         <div class="w-full">
@@ -74,16 +74,15 @@
             <router-link :to="{ name: 'portfolio', hash: '#projects' }">
                 <div class="flex justify-start items-center mb-3 text-3xl dark:hover:text-white">
                     <span>#</span>
-                    <h1 class="ml-2"  id="t-projects" >{{ t('projects') }}</h1>
+                    <h1 class="ml-2" id="t-projects">{{ t('projects') }}</h1>
                 </div>
             </router-link>
             <p class="text-sm">{{ t('projects_introduction') }}</p>
         </section>
+        
         <section>
             <ul>
-                <li v-for="project in projects" :key="project.id"
-                class="flex items-center justify-start"
-                >
+                <li v-for="project in projects" :key="project.id" class="flex items-center justify-start">
                     <router-link :to="{ name: 'portfolio', hash: `#project${project.id}` }"
                         class="cursor-pointer flex items-center justify-start p-1 pl-4 text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
                         <span class="mr-2">•</span>
@@ -169,7 +168,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import { useI18n } from 'vue-i18n';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import '@/assets/styles.css';
+
 import { Pagination } from 'swiper/modules';
 import { onMounted, ref, watch, nextTick } from 'vue';
 import { useProjectsStore } from '@/stores/projectsStore';

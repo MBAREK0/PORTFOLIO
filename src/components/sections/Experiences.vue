@@ -1,5 +1,5 @@
 <template>
-    <section  class="mb-5 section" v-if="ExperiencesStore.loading">
+    <section  id="experiences" class="mb-5 section" v-if="ExperiencesStore.loading">
         <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
 
         <div class="w-full">
@@ -68,6 +68,7 @@
         </div>
 
     </section>
+    
     <section id="experiences" class="mb-5 section" v-else>
         <router-link :to="{ name: 'portfolio', hash: '#experiences' }">
             <div class="flex justify-start items-center mb-3 text-3xl dark:hover:text-white">

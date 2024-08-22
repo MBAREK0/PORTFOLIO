@@ -1,5 +1,5 @@
 <template>
-    <section  class="mb-5 section"  v-if="educationsStore.loading">
+    <section id="educations"  class="mb-5 section"  v-if="educationsStore.loading">
         <div class="mb-5 section">
             <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-3"></div>
             <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[480px] mb-2.5"></div>

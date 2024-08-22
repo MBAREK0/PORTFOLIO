@@ -1,5 +1,5 @@
 <template>
-  <section class="mb-5 section mt-10" v-if="infoStore.loading">
+  <section id="introduction" class="mb-5 section mt-10" v-if="infoStore.loading">
     <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
 
     <div class="w-full">
