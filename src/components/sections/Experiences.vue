@@ -159,7 +159,6 @@ const mainStore = useMainStore();
 const fetchData = async () => {
     await ExperiencesStore.get();
     experiences.value = ExperiencesStore.data;
-    console.log('experiences.value', experiences.value);
     ExperiencesStore.loading = false;
 
 };

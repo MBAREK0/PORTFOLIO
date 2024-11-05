@@ -133,11 +133,6 @@ onMounted(async () => {
             console.warn(`Tooltip element not found for ${contact.id}`);
         }
     });
-
-    console.log('contactsWithContactRef', contactsWithContactRef);
-    console.log('contactsWithPathRef', contactsWithPathRef);
-    
-
 });
 
 watch(

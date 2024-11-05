@@ -186,7 +186,6 @@ const projects = ref({});
 const fetchData = async () => {
     await projectStore.get();
     projects.value = projectStore.data;
-    console.log('projects.value', projects.value);
     projectStore.loading = false;
 };
 

@@ -46,7 +46,7 @@
                     {{ skill.name }}
                 </span>
                 <!-- Show More/Show Less Button -->
-                <button v-if="skills.length > 10" @click="showModal = true"
+                <button v-if="skills.length > 10 && isFooter == false" @click="showModal = true"
                     class="text-blue-600 hover:underline text-xs font-semibold">
                     Show More
                 </button>
@@ -66,7 +66,7 @@
             <div class="bg-white dark:bg-gray-800  w-full max-w-xl xl:max-w-2xl overflow-y-auto modal-content"
                 @click.stop>
                 <div class="flex justify-between items-center p-4 border-b dark:border-gray-700">
-                    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">All skills</h3>
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">{{ t('all_Skills') }}</h3>
                     <button @click="showModal = false" class="text-gray-500 dark:text-gray-400">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
@@ -82,6 +82,7 @@
                             class="text-xs font-semibold px-2 py-0.5 rounded text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800">
                             {{ skill.name }}
                         </span>
+
                     </div>
                 </div>
             </div>
@@ -96,6 +97,12 @@ import { useI18n } from 'vue-i18n';
 import { onMounted, ref, watch, computed } from 'vue'
 import { useSkillsStore } from '@/stores/skillsStore';
 import { useMainStore } from '@/stores/mainStore';
+import { defineProps } from 'vue';
+
+const props = defineProps({
+  isFooter: Boolean 
+});
+
 
 const { t } = useI18n();
 const skillsStore = useSkillsStore();
@@ -118,10 +125,12 @@ watch(
         await fetchData();
     }
 );
-
-
-const displayedSkills = computed(() => (skills.length > 20 ? skills.value : skills.value.slice(0, 20)));
+const displayedSkills = computed(() => {
+    if (props.isFooter) return skills.value;
+    return skills.value.length > 10 ? skills.value.slice(0, 20) : skills.value;
+});
 const showModal = ref(false);
+const isFooter = ref(props.isFooter);
 </script>
 <style>
 .backdrop {

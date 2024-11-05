@@ -55,7 +55,7 @@
             </div>
 
             <!-- skills section -->
-            <skills />
+            <skills :isFooter="false" />
 
             <!-- languages -->
             <languages />
