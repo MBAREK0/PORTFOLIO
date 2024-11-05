@@ -192,9 +192,10 @@ const fetchData = async () => {
 
 onMounted(async () => {
     await fetchData();
-    await nextTick(); // Ensure DOM is updated before initializing tooltips
+    await nextTick(); 
 
-    projects.value.forEach(project => {
+    if (!projects.value.length === 0){
+        projects.value.forEach(project => {
         const githubTooltipContent = document.querySelector(`[data-tooltip-content="#project-github-${project.id}"]`);
         const hostTooltipContent = document.querySelector(`[data-tooltip-content="#project-host-${project.id}"]`);
 
@@ -220,6 +221,8 @@ onMounted(async () => {
             console.warn(`Host tooltip content not found for ${project.id}`);
         }
     });
+    }
+
 });
 
 watch(

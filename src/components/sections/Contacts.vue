@@ -93,6 +93,7 @@ const fetchData = async () => {
     await contactsStore.get();
     const contacts = contactsStore.data;
 
+    // Filter contacts based on path and contact field
     const contactsWithPath = contacts.filter(contact => contact.path !== null);
     const contactsWithContact = contacts.filter(contact => contact.contact !== null);
 
@@ -101,7 +102,6 @@ const fetchData = async () => {
 
     contactsStore.loading = false;
 };
-
 onMounted(async () => {
     await fetchData();
     await nextTick(); // Ensure DOM is updated before initializing tooltips
@@ -133,6 +133,11 @@ onMounted(async () => {
             console.warn(`Tooltip element not found for ${contact.id}`);
         }
     });
+
+    console.log('contactsWithContactRef', contactsWithContactRef);
+    console.log('contactsWithPathRef', contactsWithPathRef);
+    
+
 });
 
 watch(

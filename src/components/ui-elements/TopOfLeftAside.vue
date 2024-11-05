@@ -14,7 +14,7 @@
 
     <div class="flex items-center justify-between my-6" v-else>
         <div class="flex items-center">
-            <img src="https://avatars.githubusercontent.com/u/4723117?v=4" alt="avatar" class="w-12 h-12 rounded-full">
+            <img :src="require('@/assets/images/profile.png')" alt="avatar" class="w-12 h-12 rounded-full">
             <div class="ml-3">
                 <h3 class="text-md font-medium  text-gray-600 dark:text-gray-400">{{ info.firstName + ' ' + info.lastName
                     }}</h3>

@@ -1,9 +1,9 @@
 <template>
     <!-- skills section -->
-    <div >
+    <div>
 
 
-        <section v-if="skillsStore.loading" >
+        <section v-if="skillsStore.loading">
             <p class="mb-3">
             <div class="h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-16"></div>
             </p>
@@ -36,29 +36,71 @@
 
             </div>
         </section>
-        <section v-else >
+        <section v-else>
             <p class="mb-3">
-                <span class="text-md font-semibold text-gray-700 dark:text-gray-400 ">{{ t('skills') }}</span>
+                <span class="text-md font-semibold text-gray-700 dark:text-gray-400">{{ t('skills') }}</span>
             </p>
-            <div class="flex flex-wrap gap-2 ">
-                <span v-for="skill in skills" :key="skill.id"
-                    class="text-xs font-semibold px-2 py-0.5 rounded text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800">{{
-                        skill.name }}</span>
+            <div class="flex flex-wrap gap-2">
+                <span v-for="(skill, index) in displayedSkills" :key="skill.id"
+                    class="text-xs font-semibold px-2 py-0.5 rounded text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800">
+                    {{ skill.name }}
+                </span>
+                <!-- Show More/Show Less Button -->
+                <button v-if="skills.length > 10" @click="showModal = true"
+                    class="text-blue-600 hover:underline text-xs font-semibold">
+                    Show More
+                </button>
+
+
             </div>
+
+
         </section>
 
+
+        <!-- modal section -->
+
+        <div v-if="showModal"
+            class="absolute top-0 z-50 flex items-start justify-center w-full h-full dark:bg-gray-800 bg-white overflow-auto"
+            @click.self="showModal = false">
+            <div class="bg-white dark:bg-gray-800  w-full max-w-xl xl:max-w-2xl overflow-y-auto modal-content"
+                @click.stop>
+                <div class="flex justify-between items-center p-4 border-b dark:border-gray-700">
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">All skills</h3>
+                    <button @click="showModal = false" class="text-gray-500 dark:text-gray-400">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="p-4">
+                    <div class="flex flex-wrap gap-2">
+                        <span v-for="skill in skills" :key="skill.id"
+                            class="text-xs font-semibold px-2 py-0.5 rounded text-blue-800 bg-blue-100 dark:bg-blue-200 dark:text-blue-800">
+                            {{ skill.name }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+
+
 </template>
 <script setup>
 import { useI18n } from 'vue-i18n';
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, ref, watch, computed } from 'vue'
 import { useSkillsStore } from '@/stores/skillsStore';
 import { useMainStore } from '@/stores/mainStore';
 
 const { t } = useI18n();
 const skillsStore = useSkillsStore();
 const mainStore = useMainStore();
-const skills = ref({});
+const skills = ref([]);
 
 const fetchData = async () => {
     await skillsStore.get();
@@ -76,4 +118,13 @@ watch(
         await fetchData();
     }
 );
+
+
+const displayedSkills = computed(() => (skills.length > 20 ? skills.value : skills.value.slice(0, 20)));
+const showModal = ref(false);
 </script>
+<style>
+.backdrop {
+    display: none !important;
+}
+</style>

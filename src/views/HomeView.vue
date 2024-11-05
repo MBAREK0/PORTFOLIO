@@ -25,7 +25,7 @@
     <LicenseAndCertifications />
 
     <!-- honors and awards section -->
-    <HonorsAndAwards />
+    <!-- <HonorsAndAwards /> -->
 
     <!-- experiences section -->
     <Experiences />

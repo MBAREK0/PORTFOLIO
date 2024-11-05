@@ -15,6 +15,7 @@ export const useContactsStore = defineStore('contactsStore', {
             try {
 
               const response = await this.apiService.getContacts();
+
               this.data = response.data;
              
             } catch (error) {

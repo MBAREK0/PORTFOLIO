@@ -20,7 +20,7 @@
 
                 <licensesAndCertifications />
 
-                <HonorsAndAwards />
+                <!-- <HonorsAndAwards /> -->
 
                 <Experiences />
 
