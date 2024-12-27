@@ -3,8 +3,8 @@ import { defineStore } from 'pinia';
 export const useMainStore = defineStore('mainStore', {
   state: () => ({
     //  api configuration
-   ApiUrl: 'http://3.88.166.59/api',
-   baseUrl: 'http://3.88.166.59/',
+   ApiUrl: 'https://api.mbarekelaadraoui.me/api',
+   baseUrl: 'https://api.mbarekelaadraoui.me/',
   //  contact form configuration
    email : 'mbarekelaadraoui@gmail.com',
    userName: 'M\'barek EL AADRAOUI',
